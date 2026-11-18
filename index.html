@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>阪神 新人王有資格者ドラフト｜量×質＆全新人立ち位置ダッシュボード</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;900&family=Teko:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Noto Sans JP', sans-serif; background-color: #0b0d11; color: #f3f4f6; }
+    .font-num { font-family: 'Teko', sans-serif; letter-spacing: 0.04em; }
+    .tigers-yellow { color: #ffe200; }
+    .gold-gradient { background: linear-gradient(135deg, #ffd700 0%, #b8860b 100%); }
+    .silver-gradient { background: linear-gradient(135deg, #e0e0e0 0%, #8a9ba8 100%); }
+    .bronze-gradient { background: linear-gradient(135deg, #cd7f32 0%, #8b4513 100%); }
+  </style>
+</head>
+<body class="p-4 md:p-8 min-h-screen">
+  <div class="max-w-7xl mx-auto space-y-10">
+
+    <!-- Header -->
+    <header class="text-center py-6 border-b border-gray-800">
+      <div class="inline-block px-3 py-1 mb-2 text-xs font-bold tracking-wider uppercase bg-yellow-400 text-black rounded-full">
+        Hanshin Tigers Rookie Draft Analytics
+      </div>
+      <h1 class="text-3xl md:text-5xl font-black tracking-tight text-white mb-3">
+        新人王有資格者ドラフト <span class="tigers-yellow">量 × 質＆全体立ち位置</span>
+      </h1>
+      <p class="text-xs md:text-sm text-gray-400 max-w-4xl mx-auto leading-relaxed">
+        独自ルール（1軍起用量：投手=対戦打者 / 野手=打席数）に加え、1軍リーグ平均を100としたセイバー指標で「質と量」を分析。<br>
+        <span class="text-gray-300 font-semibold">【1軍平均基準値】</span>
+        投手 (385名・63,898打者)：K% <span class="text-blue-300">21.02%</span> / BB% <span class="text-blue-300">7.58%</span> / <span class="text-yellow-300 font-bold">K-BB% 13.44% (= K-BB+ 100)</span>
+        ｜ 野手 (360名・62,090打席)：出塁率 <span class="text-orange-300">0.309</span> / 長打率 <span class="text-orange-300">0.370</span> / <span class="text-yellow-300 font-bold">OPS 0.679 (= OPS+ 100)</span>
+      </p>
+    </header>
+
+    <!-- Section 1: Draft Ranking & Team Summary -->
+    <section class="space-y-6">
+      <h2 class="text-xl font-bold flex items-center gap-2 text-yellow-400">
+        <span>1. ドラフト最終順位 ＆ チーム別「量×質」サマリー</span>
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+        
+            <div class="relative rounded-2xl p-5 flex flex-col justify-between shadow-xl border-2 border-yellow-400/80 bg-gradient-to-b from-yellow-950/40 to-gray-900 md:order-2 md:-translate-y-2">
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 gold-gradient text-black font-black text-xs px-3 py-0.5 rounded-full shadow-md whitespace-nowrap">
+                Champion 1st
+              </div>
+              <div>
+                <div class="text-xs text-yellow-400/80 font-bold mb-1 mt-1">優勝</div>
+                <div class="text-lg font-black text-white truncate" title="おならぶーぶぶ">おならぶーぶぶ</div>
+                <div class="font-black font-num my-1 tigers-yellow text-5xl">240 <span class="text-base font-normal text-gray-400">pt</span></div>
+              </div>
+              <div class="text-xs space-y-2 pt-3 border-t border-gray-800 text-gray-300">
+                <div>
+                  <div class="flex justify-between font-bold"><span>木下 里都 (投)</span><span class="text-yellow-400">215 pt</span></div>
+                  <div class="text-[11px] text-gray-400 text-right">K-BB+ 117.6 / 15.8%</div>
+                </div>
+                <div>
+                  <div class="flex justify-between font-bold"><span>中川 勇斗 (捕)</span><span class="text-yellow-400">25 pt</span></div>
+                  <div class="text-[11px] text-gray-400 text-right">OPS+ 9.3</div>
+                </div>
+              </div>
+            </div>
+            <div class="relative rounded-2xl p-5 flex flex-col justify-between shadow-xl border border-gray-700 bg-gray-900 md:order-1">
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 silver-gradient text-black font-black text-xs px-3 py-0.5 rounded-full shadow-md whitespace-nowrap">
+                2nd Place
+              </div>
+              <div>
+                <div class="text-xs text-yellow-400/80 font-bold mb-1 mt-1">準優勝 (差: -2pt)</div>
+                <div class="text-lg font-black text-white truncate" title="パパパパパパパパパパワー">パパパパパパパパパパワー</div>
+                <div class="font-black font-num my-1 text-gray-100 text-4xl">238 <span class="text-base font-normal text-gray-400">pt</span></div>
+              </div>
+              <div class="text-xs space-y-2 pt-3 border-t border-gray-800 text-gray-300">
+                <div>
+                  <div class="flex justify-between font-bold"><span>工藤 泰成 (投)</span><span class="text-yellow-400">238 pt</span></div>
+                  <div class="text-[11px] text-gray-400 text-right">K-BB+ 203.2 / 27.3%</div>
+                </div>
+                <div>
+                  <div class="flex justify-between font-bold"><span>山田 脩也 (内)</span><span class="text-yellow-400">0 pt</span></div>
+                  <div class="text-[11px] text-gray-400 text-right">出場なし</div>
+                </div>
+              </div>
+            </div>
+            <div class="relative rounded-2xl p-5 flex flex-col justify-between shadow-xl border border-gray-700 bg-gray-900 md:order-3">
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 bronze-gradient text-white font-black text-xs px-3 py-0.5 rounded-full shadow-md whitespace-nowrap">
+                3rd Place
+              </div>
+              <div>
+                <div class="text-xs text-yellow-400/80 font-bold mb-1 mt-1">第3位</div>
+                <div class="text-lg font-black text-white truncate" title="毛玉おやぢ">毛玉おやぢ</div>
+                <div class="font-black font-num my-1 text-amber-500 text-4xl">167 <span class="text-base font-normal text-gray-400">pt</span></div>
+              </div>
+              <div class="text-xs space-y-2 pt-3 border-t border-gray-800 text-gray-300">
+                <div>
+                  <div class="flex justify-between font-bold"><span>下村 海翔 (投)</span><span class="text-yellow-400">165 pt</span></div>
+                  <div class="text-[11px] text-gray-400 text-right">K-BB+ 135.3 / 18.2%</div>
+                </div>
+                <div>
+                  <div class="flex justify-between font-bold"><span>百﨑 蒼生 (内)</span><span class="text-yellow-400">2 pt</span></div>
+                  <div class="text-[11px] text-gray-400 text-right">OPS+ -100.0</div>
+                </div>
+              </div>
+            </div>
+            <div class="relative rounded-2xl p-5 flex flex-col justify-between shadow-xl border border-gray-800 bg-gray-900/80 md:order-4">
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gray-700 text-gray-200 font-black text-xs px-3 py-0.5 rounded-full shadow-md whitespace-nowrap">
+                4th Place
+              </div>
+              <div>
+                <div class="text-xs text-yellow-400/80 font-bold mb-1 mt-1">第4位 (3位差: -4pt)</div>
+                <div class="text-lg font-black text-white truncate" title="ケツからぼたもち">ケツからぼたもち</div>
+                <div class="font-black font-num my-1 text-gray-300 text-3xl">163 <span class="text-base font-normal text-gray-400">pt</span></div>
+              </div>
+              <div class="text-xs space-y-2 pt-3 border-t border-gray-800 text-gray-300">
+                <div>
+                  <div class="flex justify-between font-bold"><span>立石 正広 (内)</span><span class="text-yellow-400">127 pt</span></div>
+                  <div class="text-[11px] text-gray-400 text-right">OPS+ 35.4</div>
+                </div>
+                <div>
+                  <div class="flex justify-between font-bold"><span>今朝丸 裕喜 (投)</span><span class="text-yellow-400">36 pt</span></div>
+                  <div class="text-[11px] text-gray-400 text-right">K-BB+ 20.7 / 2.8%</div>
+                </div>
+              </div>
+            </div>
+            <div class="relative rounded-2xl p-5 flex flex-col justify-between shadow-xl border border-gray-800 bg-gray-900/80 md:order-5">
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gray-800 text-gray-400 font-black text-xs px-3 py-0.5 rounded-full shadow-md whitespace-nowrap">
+                5th Place
+              </div>
+              <div>
+                <div class="text-xs text-yellow-400/80 font-bold mb-1 mt-1">第5位</div>
+                <div class="text-lg font-black text-white truncate" title="あッチょんぶりけ">あッチょんぶりけ</div>
+                <div class="font-black font-num my-1 text-gray-300 text-3xl">75 <span class="text-base font-normal text-gray-400">pt</span></div>
+              </div>
+              <div class="text-xs space-y-2 pt-3 border-t border-gray-800 text-gray-300">
+                <div>
+                  <div class="flex justify-between font-bold"><span>嶋村 麟士朗 (捕)</span><span class="text-yellow-400">41 pt</span></div>
+                  <div class="text-[11px] text-gray-400 text-right">OPS+ 35.6</div>
+                </div>
+                <div>
+                  <div class="flex justify-between font-bold"><span>岡城 快生 (外)</span><span class="text-yellow-400">34 pt</span></div>
+                  <div class="text-[11px] text-gray-400 text-right">OPS+ 14.4</div>
+                </div>
+              </div>
+            </div>
+      </div>
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl p-5 shadow-lg">
+        <h3 class="text-base font-bold text-white mb-3">指名者別 獲得ポイント内訳（独自ルール）</h3>
+        <div class="relative h-60">
+          <canvas id="userChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Drafted 10 Players Quality x Quantity & Rankings -->
+    <section class="space-y-6">
+      <h2 class="text-xl font-bold flex items-center gap-2 text-yellow-400">
+        <span>2. 指名10選手の「量 × 質」詳細＆新人王有資格者内ランキング</span>
+      </h2>
+
+      <!-- Pitchers -->
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden shadow-lg">
+        <div class="px-5 py-3.5 bg-blue-950/30 border-b border-gray-800 flex flex-wrap items-center justify-between gap-2">
+          <h3 class="text-base font-bold text-blue-300">⚾ 投手編（指名4名）｜ 量：対戦打者・K-BB実数 ／ 質：K-BB%・K-BB+</h3>
+          <span class="text-xs text-gray-400">K-BB+ = 100 × (選手K-BB% / 1軍平均 13.44%)</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm text-gray-300 whitespace-nowrap">
+            <thead class="bg-gray-950 text-xs text-gray-400 border-b border-gray-800">
+              <tr>
+                <th class="py-2.5 px-3 text-center">指名順</th>
+                <th class="py-2.5 px-3">指名者</th>
+                <th class="py-2.5 px-3">選手名</th>
+                <th class="py-2.5 px-3 text-right">対戦打者(pt)</th>
+                <th class="py-2.5 px-3 text-right">K-BB (実数)</th>
+                <th class="py-2.5 px-3 text-right">K-BB%</th>
+                <th class="py-2.5 px-3 text-right">K-BB+</th>
+                <th class="py-2.5 px-3 text-center">12球団新人 量順位</th>
+                <th class="py-2.5 px-3 text-center">12球団新人 質順位(30打者以上)</th>
+                <th class="py-2.5 px-3 text-center">阪神新人内順位</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-800/60">
+              
+            <tr class="hover:bg-gray-800/50 transition">
+              <td class="py-3 px-3 text-center text-gray-400 font-bold">#3</td>
+              <td class="py-3 px-3 font-semibold text-white">パパパパパパパパパパワー</td>
+              <td class="py-3 px-3 font-bold text-yellow-300">工藤 泰成</td>
+              <td class="py-3 px-3 text-right font-num text-xl text-yellow-400">238 <span class="text-xs font-sans text-gray-500">pt</span></td>
+              <td class="py-3 px-3 text-right font-bold text-blue-300">+65 <span class="text-xs text-gray-500">(80K-15BB)</span></td>
+              <td class="py-3 px-3 text-right font-bold text-white">27.31%</td>
+              <td class="py-3 px-3 text-right font-num text-xl text-emerald-400 font-black">203.2</td>
+              <td class="py-3 px-3 text-center text-xs"><span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200">7位 / 139人</span></td>
+              <td class="py-3 px-3 text-center text-xs"><span class="px-2 py-0.5 rounded bg-blue-950/60 text-blue-200 border border-blue-800/50">1位 / 72人</span></td>
+              <td class="py-3 px-3 text-center text-xs text-yellow-300/90">量:1位 / 質:1位 <span class="text-gray-500">(全12人)</span></td>
+            </tr>
+            <tr class="hover:bg-gray-800/50 transition">
+              <td class="py-3 px-3 text-center text-gray-400 font-bold">#7</td>
+              <td class="py-3 px-3 font-semibold text-white">おならぶーぶぶ</td>
+              <td class="py-3 px-3 font-bold text-yellow-300">木下 里都</td>
+              <td class="py-3 px-3 text-right font-num text-xl text-yellow-400">215 <span class="text-xs font-sans text-gray-500">pt</span></td>
+              <td class="py-3 px-3 text-right font-bold text-blue-300">+34 <span class="text-xs text-gray-500">(53K-19BB)</span></td>
+              <td class="py-3 px-3 text-right font-bold text-white">15.81%</td>
+              <td class="py-3 px-3 text-right font-num text-xl text-emerald-400 font-black">117.6</td>
+              <td class="py-3 px-3 text-center text-xs"><span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200">9位 / 139人</span></td>
+              <td class="py-3 px-3 text-center text-xs"><span class="px-2 py-0.5 rounded bg-blue-950/60 text-blue-200 border border-blue-800/50">9位 / 72人</span></td>
+              <td class="py-3 px-3 text-center text-xs text-yellow-300/90">量:2位 / 質:4位 <span class="text-gray-500">(全12人)</span></td>
+            </tr>
+            <tr class="hover:bg-gray-800/50 transition">
+              <td class="py-3 px-3 text-center text-gray-400 font-bold">#4</td>
+              <td class="py-3 px-3 font-semibold text-white">毛玉おやぢ</td>
+              <td class="py-3 px-3 font-bold text-yellow-300">下村 海翔</td>
+              <td class="py-3 px-3 text-right font-num text-xl text-yellow-400">165 <span class="text-xs font-sans text-gray-500">pt</span></td>
+              <td class="py-3 px-3 text-right font-bold text-blue-300">+30 <span class="text-xs text-gray-500">(34K-4BB)</span></td>
+              <td class="py-3 px-3 text-right font-bold text-white">18.18%</td>
+              <td class="py-3 px-3 text-right font-num text-xl text-emerald-400 font-black">135.3</td>
+              <td class="py-3 px-3 text-center text-xs"><span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200">19位 / 139人</span></td>
+              <td class="py-3 px-3 text-center text-xs"><span class="px-2 py-0.5 rounded bg-blue-950/60 text-blue-200 border border-blue-800/50">5位 / 72人</span></td>
+              <td class="py-3 px-3 text-center text-xs text-yellow-300/90">量:3位 / 質:3位 <span class="text-gray-500">(全12人)</span></td>
+            </tr>
+            <tr class="hover:bg-gray-800/50 transition">
+              <td class="py-3 px-3 text-center text-gray-400 font-bold">#6</td>
+              <td class="py-3 px-3 font-semibold text-white">ケツからぼたもち</td>
+              <td class="py-3 px-3 font-bold text-yellow-300">今朝丸 裕喜</td>
+              <td class="py-3 px-3 text-right font-num text-xl text-yellow-400">36 <span class="text-xs font-sans text-gray-500">pt</span></td>
+              <td class="py-3 px-3 text-right font-bold text-blue-300">+1 <span class="text-xs text-gray-500">(3K-2BB)</span></td>
+              <td class="py-3 px-3 text-right font-bold text-white">2.78%</td>
+              <td class="py-3 px-3 text-right font-num text-xl text-rose-400 font-bold">20.7</td>
+              <td class="py-3 px-3 text-center text-xs"><span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200">64位 / 139人</span></td>
+              <td class="py-3 px-3 text-center text-xs"><span class="px-2 py-0.5 rounded bg-blue-950/60 text-blue-200 border border-blue-800/50">60位 / 72人</span></td>
+              <td class="py-3 px-3 text-center text-xs text-yellow-300/90">量:9位 / 質:9位 <span class="text-gray-500">(全12人)</span></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Hitters -->
+      <div class="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden shadow-lg">
+        <div class="px-5 py-3.5 bg-orange-950/30 border-b border-gray-800 flex flex-wrap items-center justify-between gap-2">
+          <h3 class="text-base font-bold text-orange-300">🏏 野手編（指名6名）｜ 量：打席数・塁打＋四球 ／ 質：OPS・OPS+</h3>
+          <span class="text-xs text-gray-400">OPS+ = 100 × (OBP/0.309 + SLG/0.370 - 1)</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm text-gray-300 whitespace-nowrap">
+            <thead class="bg-gray-950 text-xs text-gray-400 border-b border-gray-800">
+              <tr>
+                <th class="py-2.5 px-3 text-center">指名順</th>
+                <th class="py-2.5 px-3">指名者</th>
+                <th class="py-2.5 px-3">選手名</th>
+                <th class="py-2.5 px-3 text-right">打席数(pt)</th>
+                <th class="py-2.5 px-3 text-right">塁打＋四球</th>
+                <th class="py-2.5 px-3 text-right">OPS</th>
+                <th class="py-2.5 px-3 text-right">OPS+</th>
+                <th class="py-2.5 px-3 text-center">12球団新人 量順位</th>
+                <th class="py-2.5 px-3 text-center">12球団新人 質順位(20打席以上)</th>
+                <th class="py-2.5 px-3 text-center">阪神新人内順位</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-800/60">
+              
+            <tr class="hover:bg-gray-800/50 transition">
+              <td class="py-3 px-3 text-center text-gray-400 font-bold">#1</td>
+              <td class="py-3 px-3 font-semibold text-white">ケツからぼたもち</td>
+              <td class="py-3 px-3 font-bold text-yellow-300">立石 正広 <span class="text-xs font-normal text-gray-400">(内野手)</span></td>
+              <td class="py-3 px-3 text-right font-num text-xl text-yellow-400">127 <span class="text-xs font-sans text-gray-500">pt</span></td>
+              <td class="py-3 px-3 text-right font-bold text-orange-300">34 <span class="text-xs text-gray-500">(32塁打+2四球)</span></td>
+              <td class="py-3 px-3 text-right font-bold text-white">0.461</td>
+              <td class="py-3 px-3 text-right font-num text-xl text-rose-400 font-bold">35.4</td>
+              <td class="py-3 px-3 text-center text-xs"><span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200">18位 / 107人</span></td>
+              <td class="py-3 px-3 text-center text-xs"><span class="px-2 py-0.5 rounded bg-orange-950/60 text-orange-200 border border-orange-800/50">34位 / 43人</span></td>
+              <td class="py-3 px-3 text-center text-xs text-yellow-300/90">量:2位 / 質:3位 <span class="text-gray-500">(全11人)</span></td>
+            </tr>
+            <tr class="hover:bg-gray-800/50 transition">
+              <td class="py-3 px-3 text-center text-gray-400 font-bold">#10</td>
+              <td class="py-3 px-3 font-semibold text-white">あッチょんぶりけ</td>
+              <td class="py-3 px-3 font-bold text-yellow-300">嶋村 麟士朗 <span class="text-xs font-normal text-gray-400">(捕手)</span></td>
+              <td class="py-3 px-3 text-right font-num text-xl text-yellow-400">41 <span class="text-xs font-sans text-gray-500">pt</span></td>
+              <td class="py-3 px-3 text-right font-bold text-orange-300">11 <span class="text-xs text-gray-500">(11塁打+0四球)</span></td>
+              <td class="py-3 px-3 text-right font-bold text-white">0.463</td>
+              <td class="py-3 px-3 text-right font-num text-xl text-rose-400 font-bold">35.6</td>
+              <td class="py-3 px-3 text-center text-xs"><span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200">31位 / 107人</span></td>
+              <td class="py-3 px-3 text-center text-xs"><span class="px-2 py-0.5 rounded bg-orange-950/60 text-orange-200 border border-orange-800/50">33位 / 43人</span></td>
+              <td class="py-3 px-3 text-center text-xs text-yellow-300/90">量:3位 / 質:2位 <span class="text-gray-500">(全11人)</span></td>
+            </tr>
+            <tr class="hover:bg-gray-800/50 transition">
+              <td class="py-3 px-3 text-center text-gray-400 font-bold">#5</td>
+              <td class="py-3 px-3 font-semibold text-white">あッチょんぶりけ</td>
+              <td class="py-3 px-3 font-bold text-yellow-300">岡城 快生 <span class="text-xs font-normal text-gray-400">(外野手)</span></td>
+              <td class="py-3 px-3 text-right font-num text-xl text-yellow-400">34 <span class="text-xs font-sans text-gray-500">pt</span></td>
+              <td class="py-3 px-3 text-right font-bold text-orange-300">7 <span class="text-xs text-gray-500">(7塁打+0四球)</span></td>
+              <td class="py-3 px-3 text-right font-bold text-white">0.389</td>
+              <td class="py-3 px-3 text-right font-num text-xl text-rose-400 font-bold">14.4</td>
+              <td class="py-3 px-3 text-center text-xs"><span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200">33位 / 107人</span></td>
+              <td class="py-3 px-3 text-center text-xs"><span class="px-2 py-0.5 rounded bg-orange-950/60 text-orange-200 border border-orange-800/50">36位 / 43人</span></td>
+              <td class="py-3 px-3 text-center text-xs text-yellow-300/90">量:4位 / 質:4位 <span class="text-gray-500">(全11人)</span></td>
+            </tr>
+            <tr class="hover:bg-gray-800/50 transition">
+              <td class="py-3 px-3 text-center text-gray-400 font-bold">#2</td>
+              <td class="py-3 px-3 font-semibold text-white">おならぶーぶぶ</td>
+              <td class="py-3 px-3 font-bold text-yellow-300">中川 勇斗 <span class="text-xs font-normal text-gray-400">(捕手)</span></td>
+              <td class="py-3 px-3 text-right font-num text-xl text-yellow-400">25 <span class="text-xs font-sans text-gray-500">pt</span></td>
+              <td class="py-3 px-3 text-right font-bold text-orange-300">7 <span class="text-xs text-gray-500">(2塁打+5四球)</span></td>
+              <td class="py-3 px-3 text-right font-bold text-white">0.355</td>
+              <td class="py-3 px-3 text-right font-num text-xl text-rose-400 font-bold">9.3</td>
+              <td class="py-3 px-3 text-center text-xs"><span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200">36位 / 107人</span></td>
+              <td class="py-3 px-3 text-center text-xs"><span class="px-2 py-0.5 rounded bg-orange-950/60 text-orange-200 border border-orange-800/50">37位 / 43人</span></td>
+              <td class="py-3 px-3 text-center text-xs text-yellow-300/90">量:5位 / 質:5位 <span class="text-gray-500">(全11人)</span></td>
+            </tr>
+            <tr class="hover:bg-gray-800/50 transition">
+              <td class="py-3 px-3 text-center text-gray-400 font-bold">#9</td>
+              <td class="py-3 px-3 font-semibold text-white">毛玉おやぢ</td>
+              <td class="py-3 px-3 font-bold text-yellow-300">百﨑 蒼生 <span class="text-xs font-normal text-gray-400">(内野手)</span></td>
+              <td class="py-3 px-3 text-right font-num text-xl text-yellow-400">2 <span class="text-xs font-sans text-gray-500">pt</span></td>
+              <td class="py-3 px-3 text-right font-bold text-orange-300">0 <span class="text-xs text-gray-500">(0塁打+0四球)</span></td>
+              <td class="py-3 px-3 text-right font-bold text-white">0.000</td>
+              <td class="py-3 px-3 text-right font-num text-xl text-rose-400 font-bold">-100.0</td>
+              <td class="py-3 px-3 text-center text-xs"><span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200">71位 / 107人</span></td>
+              <td class="py-3 px-3 text-center text-xs"><span class="px-2 py-0.5 rounded bg-orange-950/60 text-orange-200 border border-orange-800/50">対象外(20打席未満)</span></td>
+              <td class="py-3 px-3 text-center text-xs text-yellow-300/90">量:7位 / 質:6位 <span class="text-gray-500">(全11人)</span></td>
+            </tr>
+            <tr class="hover:bg-gray-800/50 transition">
+              <td class="py-3 px-3 text-center text-gray-400 font-bold">#8</td>
+              <td class="py-3 px-3 font-semibold text-white">パパパパパパパパパパワー</td>
+              <td class="py-3 px-3 font-bold text-yellow-300">山田 脩也 <span class="text-xs font-normal text-gray-400">(内野手)</span></td>
+              <td class="py-3 px-3 text-right font-num text-xl text-yellow-400">0 <span class="text-xs font-sans text-gray-500">pt</span></td>
+              <td class="py-3 px-3 text-right font-bold text-orange-300">0 <span class="text-xs text-gray-500">(0塁打+0四球)</span></td>
+              <td class="py-3 px-3 text-right font-bold text-white">-</td>
+              <td class="py-3 px-3 text-right font-num text-xl text-gray-500">-</td>
+              <td class="py-3 px-3 text-center text-xs"><span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200">78位 / 107人</span></td>
+              <td class="py-3 px-3 text-center text-xs"><span class="px-2 py-0.5 rounded bg-orange-950/60 text-orange-200 border border-orange-800/50">出場なし</span></td>
+              <td class="py-3 px-3 text-center text-xs text-yellow-300/90">量:9位 / 質:- <span class="text-gray-500">(全11人)</span></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: 4-Quadrant Scatter Matrices -->
+    <section class="space-y-4">
+      <h2 class="text-xl font-bold flex items-center gap-2 text-yellow-400">
+        <span>3. 全新人王有資格者「質 × 量」4象限ポジショニングマップ</span>
+      </h2>
+      <p class="text-xs text-gray-400">
+        右上に行くほど「起用量が多く（量）、1軍平均を大きく上回るパフォーマンス（質）」を発揮した選手です。黄色＝阪神指名選手、水色＝阪神未指名選手、グレー＝他球団の新人王有資格者。
+      </p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Pitcher Scatter -->
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-5 shadow-lg">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-base font-bold text-blue-300">投手：対戦打者数（量）× K-BB+（質）</h3>
+            <span class="text-[11px] text-gray-400">対象：30打者以上(72名)＋阪神全登板</span>
+          </div>
+          <div class="relative h-80">
+            <canvas id="pitcherScatter"></canvas>
+          </div>
+        </div>
+
+        <!-- Hitter Scatter -->
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-5 shadow-lg">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <h3 class="text-base font-bold text-orange-300">野手：<span id="hitterXLabel">打席数</span>（量）× OPS+（質）</h3>
+            <div class="inline-flex rounded-lg bg-gray-950 p-0.5 border border-gray-800 text-xs">
+              <button id="btnHitterPA" onclick="switchHitterX('pa')" class="px-2.5 py-1 rounded-md bg-yellow-400 text-black font-bold transition">横軸：打席数</button>
+              <button id="btnHitterTBBB" onclick="switchHitterX('tb_bb')" class="px-2.5 py-1 rounded-md text-gray-400 hover:text-white transition">横軸：塁打＋四球</button>
+            </div>
+          </div>
+          <div class="relative h-80">
+            <canvas id="hitterScatter"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Hanshin All 23 Rookie-Eligible Players -->
+    <section class="space-y-4">
+      <h2 class="text-xl font-bold flex items-center gap-2 text-yellow-400">
+        <span>4. 阪神 新人王有資格者 全23名 完全序列（指名 vs 未指名「隠れMVP」検証）</span>
+      </h2>
+      <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+        <!-- Hanshin Pitchers -->
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden shadow-lg">
+          <div class="px-4 py-3 bg-gray-950 border-b border-gray-800 flex justify-between items-center">
+            <h3 class="text-sm font-bold text-blue-300">阪神 投手有資格者（全12名）</h3>
+            <span class="text-xs text-cyan-300">注目：神宮(K-BB+ 174.5)・石黒(106.3)が未指名</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs text-gray-300 whitespace-nowrap">
+              <thead class="bg-gray-950/60 text-gray-400 border-b border-gray-800">
+                <tr>
+                  <th class="py-2 px-3 text-center">虎内</th>
+                  <th class="py-2 px-3">選手名</th>
+                  <th class="py-2 px-3">指名状況</th>
+                  <th class="py-2 px-3 text-right">打者(pt)</th>
+                  <th class="py-2 px-3 text-right">投球回</th>
+                  <th class="py-2 px-3 text-right">防御率</th>
+                  <th class="py-2 px-3 text-right">K-BB</th>
+                  <th class="py-2 px-3 text-right">K-BB%</th>
+                  <th class="py-2 px-3 text-right">K-BB+</th>
+                  <th class="py-2 px-3 text-center">12球団 量/質</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-800/60">
+                
+            <tr class="hover:bg-gray-800/40 bg-yellow-950/15">
+              <td class="py-2.5 px-3 text-center text-xs text-gray-400">1</td>
+              <td class="py-2.5 px-3 font-bold text-white">工藤 泰成</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 text-xs rounded bg-yellow-400 text-black font-bold">指名 (パパパパパパパパパパワー)</span></td>
+              <td class="py-2.5 px-3 text-right font-bold text-yellow-400">238</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">60.0</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">1.05</td>
+              <td class="py-2.5 px-3 text-right font-semibold text-blue-300">+65</td>
+              <td class="py-2.5 px-3 text-right text-white">27.31%</td>
+              <td class="py-2.5 px-3 text-right text-emerald-400 font-bold">203.2</td>
+              <td class="py-2.5 px-3 text-center text-xs text-gray-300">7位 / 1位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 bg-yellow-950/15">
+              <td class="py-2.5 px-3 text-center text-xs text-gray-400">2</td>
+              <td class="py-2.5 px-3 font-bold text-white">木下 里都</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 text-xs rounded bg-yellow-400 text-black font-bold">指名 (おならぶーぶぶ)</span></td>
+              <td class="py-2.5 px-3 text-right font-bold text-yellow-400">215</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">51.1</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">1.58</td>
+              <td class="py-2.5 px-3 text-right font-semibold text-blue-300">+34</td>
+              <td class="py-2.5 px-3 text-right text-white">15.81%</td>
+              <td class="py-2.5 px-3 text-right text-emerald-400 font-bold">117.6</td>
+              <td class="py-2.5 px-3 text-center text-xs text-gray-300">9位 / 9位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 bg-yellow-950/15">
+              <td class="py-2.5 px-3 text-center text-xs text-gray-400">3</td>
+              <td class="py-2.5 px-3 font-bold text-white">下村 海翔</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 text-xs rounded bg-yellow-400 text-black font-bold">指名 (毛玉おやぢ)</span></td>
+              <td class="py-2.5 px-3 text-right font-bold text-yellow-400">165</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">37.0</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">4.86</td>
+              <td class="py-2.5 px-3 text-right font-semibold text-blue-300">+30</td>
+              <td class="py-2.5 px-3 text-right text-white">18.18%</td>
+              <td class="py-2.5 px-3 text-right text-emerald-400 font-bold">135.3</td>
+              <td class="py-2.5 px-3 text-center text-xs text-gray-300">19位 / 5位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2.5 px-3 text-center text-xs text-gray-400">4</td>
+              <td class="py-2.5 px-3 font-bold text-white">石黒 佑弥</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 text-xs rounded bg-cyan-950 text-cyan-300 border border-cyan-700/60">未指名</span></td>
+              <td class="py-2.5 px-3 text-right font-bold text-yellow-400">91</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">19.2</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">4.58</td>
+              <td class="py-2.5 px-3 text-right font-semibold text-blue-300">+13</td>
+              <td class="py-2.5 px-3 text-right text-white">14.29%</td>
+              <td class="py-2.5 px-3 text-right text-emerald-400 font-bold">106.3</td>
+              <td class="py-2.5 px-3 text-center text-xs text-gray-300">38位 / 13位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2.5 px-3 text-center text-xs text-gray-400">5</td>
+              <td class="py-2.5 px-3 font-bold text-white">神宮 僚介</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 text-xs rounded bg-cyan-950 text-cyan-300 border border-cyan-700/60">未指名</span></td>
+              <td class="py-2.5 px-3 text-right font-bold text-yellow-400">81</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">20.1</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">2.21</td>
+              <td class="py-2.5 px-3 text-right font-semibold text-blue-300">+19</td>
+              <td class="py-2.5 px-3 text-right text-white">23.46%</td>
+              <td class="py-2.5 px-3 text-right text-emerald-400 font-bold">174.5</td>
+              <td class="py-2.5 px-3 text-center text-xs text-gray-300">41位 / 2位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2.5 px-3 text-center text-xs text-gray-400">6</td>
+              <td class="py-2.5 px-3 font-bold text-white">早川 太貴</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 text-xs rounded bg-cyan-950 text-cyan-300 border border-cyan-700/60">未指名</span></td>
+              <td class="py-2.5 px-3 text-right font-bold text-yellow-400">70</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">13.2</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">9.22</td>
+              <td class="py-2.5 px-3 text-right font-semibold text-blue-300">+8</td>
+              <td class="py-2.5 px-3 text-right text-white">11.43%</td>
+              <td class="py-2.5 px-3 text-right text-gray-400">85.0</td>
+              <td class="py-2.5 px-3 text-center text-xs text-gray-300">45位 / 20位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2.5 px-3 text-center text-xs text-gray-400">7</td>
+              <td class="py-2.5 px-3 font-bold text-white">茨木 秀俊</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 text-xs rounded bg-cyan-950 text-cyan-300 border border-cyan-700/60">未指名</span></td>
+              <td class="py-2.5 px-3 text-right font-bold text-yellow-400">63</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">12.2</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">6.39</td>
+              <td class="py-2.5 px-3 text-right font-semibold text-blue-300">+2</td>
+              <td class="py-2.5 px-3 text-right text-white">3.17%</td>
+              <td class="py-2.5 px-3 text-right text-gray-400">23.6</td>
+              <td class="py-2.5 px-3 text-center text-xs text-gray-300">50位 / 58位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2.5 px-3 text-center text-xs text-gray-400">8</td>
+              <td class="py-2.5 px-3 font-bold text-white">津田 淳哉</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 text-xs rounded bg-cyan-950 text-cyan-300 border border-cyan-700/60">未指名</span></td>
+              <td class="py-2.5 px-3 text-right font-bold text-yellow-400">45</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">10.1</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">4.35</td>
+              <td class="py-2.5 px-3 text-right font-semibold text-blue-300">+3</td>
+              <td class="py-2.5 px-3 text-right text-white">6.67%</td>
+              <td class="py-2.5 px-3 text-right text-gray-400">49.6</td>
+              <td class="py-2.5 px-3 text-center text-xs text-gray-300">60位 / 46位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 bg-yellow-950/15">
+              <td class="py-2.5 px-3 text-center text-xs text-gray-400">9</td>
+              <td class="py-2.5 px-3 font-bold text-white">今朝丸 裕喜</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 text-xs rounded bg-yellow-400 text-black font-bold">指名 (ケツからぼたもち)</span></td>
+              <td class="py-2.5 px-3 text-right font-bold text-yellow-400">36</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">8.0</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">5.63</td>
+              <td class="py-2.5 px-3 text-right font-semibold text-blue-300">+1</td>
+              <td class="py-2.5 px-3 text-right text-white">2.78%</td>
+              <td class="py-2.5 px-3 text-right text-gray-400">20.7</td>
+              <td class="py-2.5 px-3 text-center text-xs text-gray-300">64位 / 60位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2.5 px-3 text-center text-xs text-gray-400">10</td>
+              <td class="py-2.5 px-3 font-bold text-white">椎葉 剛</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 text-xs rounded bg-cyan-950 text-cyan-300 border border-cyan-700/60">未指名</span></td>
+              <td class="py-2.5 px-3 text-right font-bold text-yellow-400">34</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">7.0</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">6.43</td>
+              <td class="py-2.5 px-3 text-right font-semibold text-blue-300">-1</td>
+              <td class="py-2.5 px-3 text-right text-white">-2.94%</td>
+              <td class="py-2.5 px-3 text-right text-gray-400">-21.9</td>
+              <td class="py-2.5 px-3 text-center text-xs text-gray-300">68位 / 69位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2.5 px-3 text-center text-xs text-gray-400">11</td>
+              <td class="py-2.5 px-3 font-bold text-white">早瀬 朔</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 text-xs rounded bg-cyan-950 text-cyan-300 border border-cyan-700/60">未指名</span></td>
+              <td class="py-2.5 px-3 text-right font-bold text-yellow-400">0</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">-</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">-</td>
+              <td class="py-2.5 px-3 text-right font-semibold text-blue-300">+0</td>
+              <td class="py-2.5 px-3 text-right text-white">-</td>
+              <td class="py-2.5 px-3 text-right text-gray-400">-</td>
+              <td class="py-2.5 px-3 text-center text-xs text-gray-300">102位 / -</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2.5 px-3 text-center text-xs text-gray-400">11</td>
+              <td class="py-2.5 px-3 font-bold text-white">能登 嵩都</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 text-xs rounded bg-cyan-950 text-cyan-300 border border-cyan-700/60">未指名</span></td>
+              <td class="py-2.5 px-3 text-right font-bold text-yellow-400">0</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">-</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">-</td>
+              <td class="py-2.5 px-3 text-right font-semibold text-blue-300">+0</td>
+              <td class="py-2.5 px-3 text-right text-white">-</td>
+              <td class="py-2.5 px-3 text-right text-gray-400">-</td>
+              <td class="py-2.5 px-3 text-center text-xs text-gray-300">102位 / -</td>
+            </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Hanshin Hitters -->
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden shadow-lg">
+          <div class="px-4 py-3 bg-gray-950 border-b border-gray-800 flex justify-between items-center">
+            <h3 class="text-sm font-bold text-orange-300">阪神 野手有資格者（全11名）</h3>
+            <span class="text-xs text-cyan-300">注目：福島圭音（154打席 / 塁打+四球49 / OPS+77.5）が虎内1位で未指名</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs text-gray-300 whitespace-nowrap">
+              <thead class="bg-gray-950/60 text-gray-400 border-b border-gray-800">
+                <tr>
+                  <th class="py-2 px-3 text-center">虎内</th>
+                  <th class="py-2 px-3">選手名</th>
+                  <th class="py-2 px-3">指名状況</th>
+                  <th class="py-2 px-3 text-right">打席(pt)</th>
+                  <th class="py-2 px-3 text-right">塁打+四球</th>
+                  <th class="py-2 px-3 text-right">打率</th>
+                  <th class="py-2 px-3 text-right">OPS</th>
+                  <th class="py-2 px-3 text-right">OPS+</th>
+                  <th class="py-2 px-3 text-center">12球団 量/質</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-800/60">
+                
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2.5 px-3 text-center text-xs text-gray-400">1</td>
+              <td class="py-2.5 px-3 font-bold text-white">福島 圭音</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 text-xs rounded bg-cyan-950 text-cyan-300 border border-cyan-700/60">未指名</span></td>
+              <td class="py-2.5 px-3 text-right font-bold text-yellow-400">154</td>
+              <td class="py-2.5 px-3 text-right font-semibold text-orange-300">49</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">.228</td>
+              <td class="py-2.5 px-3 text-right text-white">0.596</td>
+              <td class="py-2.5 px-3 text-right text-gray-400">77.5</td>
+              <td class="py-2.5 px-3 text-center text-xs text-gray-300">13位 / 20位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 bg-yellow-950/15">
+              <td class="py-2.5 px-3 text-center text-xs text-gray-400">2</td>
+              <td class="py-2.5 px-3 font-bold text-white">立石 正広</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 text-xs rounded bg-yellow-400 text-black font-bold">指名 (ケツからぼたもち)</span></td>
+              <td class="py-2.5 px-3 text-right font-bold text-yellow-400">127</td>
+              <td class="py-2.5 px-3 text-right font-semibold text-orange-300">34</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">.192</td>
+              <td class="py-2.5 px-3 text-right text-white">0.461</td>
+              <td class="py-2.5 px-3 text-right text-gray-400">35.4</td>
+              <td class="py-2.5 px-3 text-center text-xs text-gray-300">18位 / 34位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 bg-yellow-950/15">
+              <td class="py-2.5 px-3 text-center text-xs text-gray-400">3</td>
+              <td class="py-2.5 px-3 font-bold text-white">嶋村 麟士朗</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 text-xs rounded bg-yellow-400 text-black font-bold">指名 (あッチょんぶりけ)</span></td>
+              <td class="py-2.5 px-3 text-right font-bold text-yellow-400">41</td>
+              <td class="py-2.5 px-3 text-right font-semibold text-orange-300">11</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">.195</td>
+              <td class="py-2.5 px-3 text-right text-white">0.463</td>
+              <td class="py-2.5 px-3 text-right text-gray-400">35.6</td>
+              <td class="py-2.5 px-3 text-center text-xs text-gray-300">31位 / 33位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 bg-yellow-950/15">
+              <td class="py-2.5 px-3 text-center text-xs text-gray-400">4</td>
+              <td class="py-2.5 px-3 font-bold text-white">岡城 快生</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 text-xs rounded bg-yellow-400 text-black font-bold">指名 (あッチょんぶりけ)</span></td>
+              <td class="py-2.5 px-3 text-right font-bold text-yellow-400">34</td>
+              <td class="py-2.5 px-3 text-right font-semibold text-orange-300">7</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">.152</td>
+              <td class="py-2.5 px-3 text-right text-white">0.389</td>
+              <td class="py-2.5 px-3 text-right text-gray-400">14.4</td>
+              <td class="py-2.5 px-3 text-center text-xs text-gray-300">33位 / 36位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 bg-yellow-950/15">
+              <td class="py-2.5 px-3 text-center text-xs text-gray-400">5</td>
+              <td class="py-2.5 px-3 font-bold text-white">中川 勇斗</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 text-xs rounded bg-yellow-400 text-black font-bold">指名 (おならぶーぶぶ)</span></td>
+              <td class="py-2.5 px-3 text-right font-bold text-yellow-400">25</td>
+              <td class="py-2.5 px-3 text-right font-semibold text-orange-300">7</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">.053</td>
+              <td class="py-2.5 px-3 text-right text-white">0.355</td>
+              <td class="py-2.5 px-3 text-right text-gray-400">9.3</td>
+              <td class="py-2.5 px-3 text-center text-xs text-gray-300">36位 / 37位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2.5 px-3 text-center text-xs text-gray-400">6</td>
+              <td class="py-2.5 px-3 font-bold text-white">谷端 将伍</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 text-xs rounded bg-cyan-950 text-cyan-300 border border-cyan-700/60">未指名</span></td>
+              <td class="py-2.5 px-3 text-right font-bold text-yellow-400">3</td>
+              <td class="py-2.5 px-3 text-right font-semibold text-orange-300">0</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">.000</td>
+              <td class="py-2.5 px-3 text-right text-white">0.000</td>
+              <td class="py-2.5 px-3 text-right text-gray-400">-100.0</td>
+              <td class="py-2.5 px-3 text-center text-xs text-gray-300">69位 / -</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2.5 px-3 text-center text-xs text-gray-400">7</td>
+              <td class="py-2.5 px-3 font-bold text-white">井坪 陽生</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 text-xs rounded bg-cyan-950 text-cyan-300 border border-cyan-700/60">未指名</span></td>
+              <td class="py-2.5 px-3 text-right font-bold text-yellow-400">2</td>
+              <td class="py-2.5 px-3 text-right font-semibold text-orange-300">0</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">.000</td>
+              <td class="py-2.5 px-3 text-right text-white">0.000</td>
+              <td class="py-2.5 px-3 text-right text-gray-400">-100.0</td>
+              <td class="py-2.5 px-3 text-center text-xs text-gray-300">71位 / -</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 bg-yellow-950/15">
+              <td class="py-2.5 px-3 text-center text-xs text-gray-400">7</td>
+              <td class="py-2.5 px-3 font-bold text-white">百﨑 蒼生</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 text-xs rounded bg-yellow-400 text-black font-bold">指名 (毛玉おやぢ)</span></td>
+              <td class="py-2.5 px-3 text-right font-bold text-yellow-400">2</td>
+              <td class="py-2.5 px-3 text-right font-semibold text-orange-300">0</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">.000</td>
+              <td class="py-2.5 px-3 text-right text-white">0.000</td>
+              <td class="py-2.5 px-3 text-right text-gray-400">-100.0</td>
+              <td class="py-2.5 px-3 text-center text-xs text-gray-300">71位 / -</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2.5 px-3 text-center text-xs text-gray-400">9</td>
+              <td class="py-2.5 px-3 font-bold text-white">町田 隼乙</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 text-xs rounded bg-cyan-950 text-cyan-300 border border-cyan-700/60">未指名</span></td>
+              <td class="py-2.5 px-3 text-right font-bold text-yellow-400">0</td>
+              <td class="py-2.5 px-3 text-right font-semibold text-orange-300">0</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">-</td>
+              <td class="py-2.5 px-3 text-right text-white">-</td>
+              <td class="py-2.5 px-3 text-right text-gray-400">-</td>
+              <td class="py-2.5 px-3 text-center text-xs text-gray-300">78位 / -</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2.5 px-3 text-center text-xs text-gray-400">9</td>
+              <td class="py-2.5 px-3 font-bold text-white">佐野 大陽</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 text-xs rounded bg-cyan-950 text-cyan-300 border border-cyan-700/60">未指名</span></td>
+              <td class="py-2.5 px-3 text-right font-bold text-yellow-400">0</td>
+              <td class="py-2.5 px-3 text-right font-semibold text-orange-300">0</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">-</td>
+              <td class="py-2.5 px-3 text-right text-white">-</td>
+              <td class="py-2.5 px-3 text-right text-gray-400">-</td>
+              <td class="py-2.5 px-3 text-center text-xs text-gray-300">78位 / -</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 bg-yellow-950/15">
+              <td class="py-2.5 px-3 text-center text-xs text-gray-400">9</td>
+              <td class="py-2.5 px-3 font-bold text-white">山田 脩也</td>
+              <td class="py-2.5 px-3"><span class="px-2 py-0.5 text-xs rounded bg-yellow-400 text-black font-bold">指名 (パパパパパパパパパパワー)</span></td>
+              <td class="py-2.5 px-3 text-right font-bold text-yellow-400">0</td>
+              <td class="py-2.5 px-3 text-right font-semibold text-orange-300">0</td>
+              <td class="py-2.5 px-3 text-right text-xs text-gray-300">-</td>
+              <td class="py-2.5 px-3 text-right text-white">-</td>
+              <td class="py-2.5 px-3 text-right text-gray-400">-</td>
+              <td class="py-2.5 px-3 text-center text-xs text-gray-300">78位 / -</td>
+            </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: 12-Team Top 15 Comparison -->
+    <section class="space-y-4">
+      <h2 class="text-xl font-bold flex items-center gap-2 text-yellow-400">
+        <span>5. 12球団 全新人王有資格者 トップ15 ＆ 阪神指名選手の立ち位置</span>
+      </h2>
+      <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+        <!-- 12-team Pitchers -->
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden shadow-lg">
+          <div class="px-4 py-3 bg-gray-950 border-b border-gray-800 flex justify-between items-center">
+            <h3 class="text-sm font-bold text-blue-300">12球団 新人王有資格投手（対戦打者Top15＋阪神指名選手）</h3>
+            <span class="text-xs text-gray-400">全139名中</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs text-gray-300 whitespace-nowrap">
+              <thead class="bg-gray-950/60 text-gray-400 border-b border-gray-800">
+                <tr>
+                  <th class="py-2 px-3 text-center">打者順</th>
+                  <th class="py-2 px-3">選手名</th>
+                  <th class="py-2 px-3">球団</th>
+                  <th class="py-2 px-3 text-right">打者</th>
+                  <th class="py-2 px-3 text-right">投球回</th>
+                  <th class="py-2 px-3 text-right">防御率</th>
+                  <th class="py-2 px-3 text-right">K-BB</th>
+                  <th class="py-2 px-3 text-right">K-BB%</th>
+                  <th class="py-2 px-3 text-right">K-BB+</th>
+                  <th class="py-2 px-3 text-center">質順(30BF以上)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-800/60">
+                
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">1位</td>
+              <td class="py-2 px-3 font-bold text-white">竹丸 和幸</td>
+              <td class="py-2 px-3 text-xs text-gray-300">巨人</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">535</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">126.2</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">3.27</td>
+              <td class="py-2 px-3 text-right text-blue-300 font-semibold">+102</td>
+              <td class="py-2 px-3 text-right">19.07%</td>
+              <td class="py-2 px-3 text-right text-emerald-400 font-bold">141.8</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">4位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">2位</td>
+              <td class="py-2 px-3 font-bold text-white">前田 悠伍</td>
+              <td class="py-2 px-3 text-xs text-gray-300">ソフトバンク</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">457</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">111.2</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">2.10</td>
+              <td class="py-2 px-3 text-right text-blue-300 font-semibold">+67</td>
+              <td class="py-2 px-3 text-right">14.66%</td>
+              <td class="py-2 px-3 text-right text-emerald-400 font-bold">109.1</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">12位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">3位</td>
+              <td class="py-2 px-3 font-bold text-white">廣池 康志郎</td>
+              <td class="py-2 px-3 text-xs text-gray-300">ロッテ</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">368</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">85.1</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">4.32</td>
+              <td class="py-2 px-3 text-right text-blue-300 font-semibold">+35</td>
+              <td class="py-2 px-3 text-right">9.51%</td>
+              <td class="py-2 px-3 text-right text-gray-300">70.8</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">31位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">4位</td>
+              <td class="py-2 px-3 font-bold text-white">毛利 海大</td>
+              <td class="py-2 px-3 text-xs text-gray-300">ロッテ</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">357</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">80.1</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">5.27</td>
+              <td class="py-2 px-3 text-right text-blue-300 font-semibold">+18</td>
+              <td class="py-2 px-3 text-right">5.04%</td>
+              <td class="py-2 px-3 text-right text-gray-300">37.5</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">52位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">5位</td>
+              <td class="py-2 px-3 font-bold text-white">篠木 健太郎</td>
+              <td class="py-2 px-3 text-xs text-gray-300">DeNA</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">308</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">71.2</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">4.65</td>
+              <td class="py-2 px-3 text-right text-blue-300 font-semibold">+33</td>
+              <td class="py-2 px-3 text-right">10.71%</td>
+              <td class="py-2 px-3 text-right text-gray-300">79.7</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">25位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">6位</td>
+              <td class="py-2 px-3 font-bold text-white">櫻井 頼之介</td>
+              <td class="py-2 px-3 text-xs text-gray-300">中日</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">256</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">57.2</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">5.31</td>
+              <td class="py-2 px-3 text-right text-blue-300 font-semibold">+36</td>
+              <td class="py-2 px-3 text-right">14.06%</td>
+              <td class="py-2 px-3 text-right text-emerald-400 font-bold">104.6</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">14位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 bg-yellow-950/30 border-l-4 border-yellow-400">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">7位</td>
+              <td class="py-2 px-3 font-bold text-white">工藤 泰成 <span class="text-xs text-yellow-300 font-bold">★パパパパパパパパパパワー</span></td>
+              <td class="py-2 px-3 text-xs text-gray-300">阪神</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">238</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">60.0</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">1.05</td>
+              <td class="py-2 px-3 text-right text-blue-300 font-semibold">+65</td>
+              <td class="py-2 px-3 text-right">27.31%</td>
+              <td class="py-2 px-3 text-right text-emerald-400 font-bold">203.2</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">1位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">8位</td>
+              <td class="py-2 px-3 font-bold text-white">深沢 鳳介</td>
+              <td class="py-2 px-3 text-xs text-gray-300">DeNA</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">234</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">54.2</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">2.96</td>
+              <td class="py-2 px-3 text-right text-blue-300 font-semibold">+19</td>
+              <td class="py-2 px-3 text-right">8.12%</td>
+              <td class="py-2 px-3 text-right text-gray-300">60.4</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">40位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 bg-yellow-950/30 border-l-4 border-yellow-400">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">9位</td>
+              <td class="py-2 px-3 font-bold text-white">木下 里都 <span class="text-xs text-yellow-300 font-bold">★おならぶーぶぶ</span></td>
+              <td class="py-2 px-3 text-xs text-gray-300">阪神</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">215</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">51.1</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">1.58</td>
+              <td class="py-2 px-3 text-right text-blue-300 font-semibold">+34</td>
+              <td class="py-2 px-3 text-right">15.81%</td>
+              <td class="py-2 px-3 text-right text-emerald-400 font-bold">117.6</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">9位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">10位</td>
+              <td class="py-2 px-3 font-bold text-white">吉田 聖弥</td>
+              <td class="py-2 px-3 text-xs text-gray-300">中日</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">203</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">48.0</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">2.44</td>
+              <td class="py-2 px-3 text-right text-blue-300 font-semibold">+19</td>
+              <td class="py-2 px-3 text-right">9.36%</td>
+              <td class="py-2 px-3 text-right text-gray-300">69.6</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">33位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">11位</td>
+              <td class="py-2 px-3 font-bold text-white">佐藤 爽</td>
+              <td class="py-2 px-3 text-xs text-gray-300">西武</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">198</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">48.0</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">3.56</td>
+              <td class="py-2 px-3 text-right text-blue-300 font-semibold">+18</td>
+              <td class="py-2 px-3 text-right">9.09%</td>
+              <td class="py-2 px-3 text-right text-gray-300">67.6</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">36位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">12位</td>
+              <td class="py-2 px-3 font-bold text-white">片山 皓心</td>
+              <td class="py-2 px-3 text-xs text-gray-300">DeNA</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">191</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">44.1</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">2.64</td>
+              <td class="py-2 px-3 text-right text-blue-300 font-semibold">+23</td>
+              <td class="py-2 px-3 text-right">12.04%</td>
+              <td class="py-2 px-3 text-right text-gray-300">89.6</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">17位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">13位</td>
+              <td class="py-2 px-3 font-bold text-white">篠原 響</td>
+              <td class="py-2 px-3 text-xs text-gray-300">西武</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">186</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">44.2</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">2.22</td>
+              <td class="py-2 px-3 text-right text-blue-300 font-semibold">+31</td>
+              <td class="py-2 px-3 text-right">16.67%</td>
+              <td class="py-2 px-3 text-right text-emerald-400 font-bold">124.0</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">8位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">14位</td>
+              <td class="py-2 px-3 font-bold text-white">片山 楽生</td>
+              <td class="py-2 px-3 text-xs text-gray-300">オリックス</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">181</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">43.0</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">3.77</td>
+              <td class="py-2 px-3 text-right text-blue-300 font-semibold">+11</td>
+              <td class="py-2 px-3 text-right">6.08%</td>
+              <td class="py-2 px-3 text-right text-gray-300">45.2</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">49位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">15位</td>
+              <td class="py-2 px-3 font-bold text-white">鈴木 豪太</td>
+              <td class="py-2 px-3 text-xs text-gray-300">ソフトバンク</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">178</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">46.2</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">1.74</td>
+              <td class="py-2 px-3 text-right text-blue-300 font-semibold">+31</td>
+              <td class="py-2 px-3 text-right">17.42%</td>
+              <td class="py-2 px-3 text-right text-emerald-400 font-bold">129.6</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">6位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 bg-yellow-950/30 border-l-4 border-yellow-400">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">19位</td>
+              <td class="py-2 px-3 font-bold text-white">下村 海翔 <span class="text-xs text-yellow-300 font-bold">★毛玉おやぢ</span></td>
+              <td class="py-2 px-3 text-xs text-gray-300">阪神</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">165</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">37.0</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">4.86</td>
+              <td class="py-2 px-3 text-right text-blue-300 font-semibold">+30</td>
+              <td class="py-2 px-3 text-right">18.18%</td>
+              <td class="py-2 px-3 text-right text-emerald-400 font-bold">135.3</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">5位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 bg-yellow-950/30 border-l-4 border-yellow-400">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">64位</td>
+              <td class="py-2 px-3 font-bold text-white">今朝丸 裕喜 <span class="text-xs text-yellow-300 font-bold">★ケツからぼたもち</span></td>
+              <td class="py-2 px-3 text-xs text-gray-300">阪神</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">36</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">8.0</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">5.63</td>
+              <td class="py-2 px-3 text-right text-blue-300 font-semibold">+1</td>
+              <td class="py-2 px-3 text-right">2.78%</td>
+              <td class="py-2 px-3 text-right text-gray-300">20.7</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">60位</td>
+            </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 12-team Hitters -->
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden shadow-lg">
+          <div class="px-4 py-3 bg-gray-950 border-b border-gray-800 flex justify-between items-center">
+            <h3 class="text-sm font-bold text-orange-300">12球団 新人王有資格野手（打席数Top15＋阪神指名選手）</h3>
+            <span class="text-xs text-gray-400">全107名中</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs text-gray-300 whitespace-nowrap">
+              <thead class="bg-gray-950/60 text-gray-400 border-b border-gray-800">
+                <tr>
+                  <th class="py-2 px-3 text-center">打席順</th>
+                  <th class="py-2 px-3">選手名</th>
+                  <th class="py-2 px-3">球団</th>
+                  <th class="py-2 px-3 text-right">打席</th>
+                  <th class="py-2 px-3 text-right">塁打+四球</th>
+                  <th class="py-2 px-3 text-right">打率</th>
+                  <th class="py-2 px-3 text-right">OPS</th>
+                  <th class="py-2 px-3 text-right">OPS+</th>
+                  <th class="py-2 px-3 text-center">質順(20PA以上)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-800/60">
+                
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">1位</td>
+              <td class="py-2 px-3 font-bold text-white">浦田 俊輔</td>
+              <td class="py-2 px-3 text-xs text-gray-300">巨人</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">474</td>
+              <td class="py-2 px-3 text-right font-semibold text-orange-300">162</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">.271</td>
+              <td class="py-2 px-3 text-right">0.641</td>
+              <td class="py-2 px-3 text-right text-gray-300">91.0</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">13位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">2位</td>
+              <td class="py-2 px-3 font-bold text-white">小島 大河</td>
+              <td class="py-2 px-3 text-xs text-gray-300">西武</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">367</td>
+              <td class="py-2 px-3 text-right font-semibold text-orange-300">150</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">.267</td>
+              <td class="py-2 px-3 text-right">0.687</td>
+              <td class="py-2 px-3 text-right text-emerald-400 font-bold">102.2</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">7位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">3位</td>
+              <td class="py-2 px-3 font-bold text-white">山中 稜真</td>
+              <td class="py-2 px-3 text-xs text-gray-300">オリックス</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">353</td>
+              <td class="py-2 px-3 text-right font-semibold text-orange-300">138</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">.259</td>
+              <td class="py-2 px-3 text-right">0.668</td>
+              <td class="py-2 px-3 text-right text-gray-300">98.0</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">9位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">4位</td>
+              <td class="py-2 px-3 font-bold text-white">庄子 雄大</td>
+              <td class="py-2 px-3 text-xs text-gray-300">ソフトバンク</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">304</td>
+              <td class="py-2 px-3 text-right font-semibold text-orange-300">103</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">.244</td>
+              <td class="py-2 px-3 text-right">0.604</td>
+              <td class="py-2 px-3 text-right text-gray-300">79.6</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">18位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">5位</td>
+              <td class="py-2 px-3 font-bold text-white">持丸 泰輝</td>
+              <td class="py-2 px-3 text-xs text-gray-300">広島</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">299</td>
+              <td class="py-2 px-3 text-right font-semibold text-orange-300">110</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">.183</td>
+              <td class="py-2 px-3 text-right">0.584</td>
+              <td class="py-2 px-3 text-right text-gray-300">73.9</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">22位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">6位</td>
+              <td class="py-2 px-3 font-bold text-white">勝田 成</td>
+              <td class="py-2 px-3 text-xs text-gray-300">広島</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">295</td>
+              <td class="py-2 px-3 text-right font-semibold text-orange-300">82</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">.203</td>
+              <td class="py-2 px-3 text-right">0.515</td>
+              <td class="py-2 px-3 text-right text-gray-300">54.0</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">28位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">7位</td>
+              <td class="py-2 px-3 font-bold text-white">名原 典彦</td>
+              <td class="py-2 px-3 text-xs text-gray-300">広島</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">285</td>
+              <td class="py-2 px-3 text-right font-semibold text-orange-300">103</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">.247</td>
+              <td class="py-2 px-3 text-right">0.627</td>
+              <td class="py-2 px-3 text-right text-gray-300">84.7</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">15位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">8位</td>
+              <td class="py-2 px-3 font-bold text-white">平良 竜哉</td>
+              <td class="py-2 px-3 text-xs text-gray-300">楽天</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">266</td>
+              <td class="py-2 px-3 text-right font-semibold text-orange-300">106</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">.241</td>
+              <td class="py-2 px-3 text-right">0.670</td>
+              <td class="py-2 px-3 text-right text-gray-300">96.1</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">11位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">9位</td>
+              <td class="py-2 px-3 font-bold text-white">宮下 朝陽</td>
+              <td class="py-2 px-3 text-xs text-gray-300">DeNA</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">223</td>
+              <td class="py-2 px-3 text-right font-semibold text-orange-300">99</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">.258</td>
+              <td class="py-2 px-3 text-right">0.713</td>
+              <td class="py-2 px-3 text-right text-emerald-400 font-bold">108.8</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">4位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">10位</td>
+              <td class="py-2 px-3 font-bold text-white">進藤 勇也</td>
+              <td class="py-2 px-3 text-xs text-gray-300">日本ハム</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">160</td>
+              <td class="py-2 px-3 text-right font-semibold text-orange-300">75</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">.211</td>
+              <td class="py-2 px-3 text-right">0.723</td>
+              <td class="py-2 px-3 text-right text-emerald-400 font-bold">110.0</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">3位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">11位</td>
+              <td class="py-2 px-3 font-bold text-white">花田 旭</td>
+              <td class="py-2 px-3 text-xs text-gray-300">中日</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">159</td>
+              <td class="py-2 px-3 text-right font-semibold text-orange-300">67</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">.242</td>
+              <td class="py-2 px-3 text-right">0.673</td>
+              <td class="py-2 px-3 text-right text-gray-300">96.5</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">10位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">12位</td>
+              <td class="py-2 px-3 font-bold text-white">大塚 瑠晏</td>
+              <td class="py-2 px-3 text-xs text-gray-300">日本ハム</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">156</td>
+              <td class="py-2 px-3 text-right font-semibold text-orange-300">62</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">.181</td>
+              <td class="py-2 px-3 text-right">0.615</td>
+              <td class="py-2 px-3 text-right text-gray-300">80.0</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">17位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 bg-cyan-950/20 border-l-4 border-cyan-400">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">13位</td>
+              <td class="py-2 px-3 font-bold text-white">福島 圭音 <span class="text-xs text-cyan-300">(阪神未指名)</span></td>
+              <td class="py-2 px-3 text-xs text-gray-300">阪神</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">154</td>
+              <td class="py-2 px-3 text-right font-semibold text-orange-300">49</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">.228</td>
+              <td class="py-2 px-3 text-right">0.596</td>
+              <td class="py-2 px-3 text-right text-gray-300">77.5</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">20位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">14位</td>
+              <td class="py-2 px-3 font-bold text-white">佐藤 啓介</td>
+              <td class="py-2 px-3 text-xs text-gray-300">広島</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">150</td>
+              <td class="py-2 px-3 text-right font-semibold text-orange-300">53</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">.203</td>
+              <td class="py-2 px-3 text-right">0.572</td>
+              <td class="py-2 px-3 text-right text-gray-300">68.3</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">26位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 ">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">14位</td>
+              <td class="py-2 px-3 font-bold text-white">鈴木 叶</td>
+              <td class="py-2 px-3 text-xs text-gray-300">ヤクルト</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">150</td>
+              <td class="py-2 px-3 text-right font-semibold text-orange-300">46</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">.192</td>
+              <td class="py-2 px-3 text-right">0.501</td>
+              <td class="py-2 px-3 text-right text-gray-300">46.7</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">30位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 bg-yellow-950/30 border-l-4 border-yellow-400">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">18位</td>
+              <td class="py-2 px-3 font-bold text-white">立石 正広 <span class="text-xs text-yellow-300 font-bold">★ケツからぼたもち</span></td>
+              <td class="py-2 px-3 text-xs text-gray-300">阪神</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">127</td>
+              <td class="py-2 px-3 text-right font-semibold text-orange-300">34</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">.192</td>
+              <td class="py-2 px-3 text-right">0.461</td>
+              <td class="py-2 px-3 text-right text-gray-300">35.4</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">34位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 bg-yellow-950/30 border-l-4 border-yellow-400">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">31位</td>
+              <td class="py-2 px-3 font-bold text-white">嶋村 麟士朗 <span class="text-xs text-yellow-300 font-bold">★あッチょんぶりけ</span></td>
+              <td class="py-2 px-3 text-xs text-gray-300">阪神</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">41</td>
+              <td class="py-2 px-3 text-right font-semibold text-orange-300">11</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">.195</td>
+              <td class="py-2 px-3 text-right">0.463</td>
+              <td class="py-2 px-3 text-right text-gray-300">35.6</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">33位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 bg-yellow-950/30 border-l-4 border-yellow-400">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">33位</td>
+              <td class="py-2 px-3 font-bold text-white">岡城 快生 <span class="text-xs text-yellow-300 font-bold">★あッチょんぶりけ</span></td>
+              <td class="py-2 px-3 text-xs text-gray-300">阪神</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">34</td>
+              <td class="py-2 px-3 text-right font-semibold text-orange-300">7</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">.152</td>
+              <td class="py-2 px-3 text-right">0.389</td>
+              <td class="py-2 px-3 text-right text-gray-300">14.4</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">36位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 bg-yellow-950/30 border-l-4 border-yellow-400">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">36位</td>
+              <td class="py-2 px-3 font-bold text-white">中川 勇斗 <span class="text-xs text-yellow-300 font-bold">★おならぶーぶぶ</span></td>
+              <td class="py-2 px-3 text-xs text-gray-300">阪神</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">25</td>
+              <td class="py-2 px-3 text-right font-semibold text-orange-300">7</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">.053</td>
+              <td class="py-2 px-3 text-right">0.355</td>
+              <td class="py-2 px-3 text-right text-gray-300">9.3</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">37位</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 bg-yellow-950/30 border-l-4 border-yellow-400">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">71位</td>
+              <td class="py-2 px-3 font-bold text-white">百﨑 蒼生 <span class="text-xs text-yellow-300 font-bold">★毛玉おやぢ</span></td>
+              <td class="py-2 px-3 text-xs text-gray-300">阪神</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">2</td>
+              <td class="py-2 px-3 text-right font-semibold text-orange-300">0</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">.000</td>
+              <td class="py-2 px-3 text-right">0.000</td>
+              <td class="py-2 px-3 text-right text-gray-300">-100.0</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">-</td>
+            </tr>
+            <tr class="hover:bg-gray-800/40 bg-yellow-950/30 border-l-4 border-yellow-400">
+              <td class="py-2 px-3 text-center font-bold text-gray-300">78位</td>
+              <td class="py-2 px-3 font-bold text-white">山田 脩也 <span class="text-xs text-yellow-300 font-bold">★パパパパパパパパパパワー</span></td>
+              <td class="py-2 px-3 text-xs text-gray-300">阪神</td>
+              <td class="py-2 px-3 text-right font-bold text-yellow-400">0</td>
+              <td class="py-2 px-3 text-right font-semibold text-orange-300">0</td>
+              <td class="py-2 px-3 text-right text-xs text-gray-300">-</td>
+              <td class="py-2 px-3 text-right">-</td>
+              <td class="py-2 px-3 text-right text-gray-300">-</td>
+              <td class="py-2 px-3 text-center text-xs text-gray-300">-</td>
+            </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="text-center text-xs text-gray-600 py-4 border-t border-gray-800">
+      出典：プロ野球データFreak（tpa-1 / ip3-1 / tpa-7 / ip3-7）1軍公式戦成績より集計
+    </footer>
+  </div>
+
+  <script>
+    // 1. チーム別積み上げグラフ
+    const teamsData = [{"owner": "おならぶーぶぶ", "p1": 215, "p2": 25, "n1": "木下 里都", "n2": "中川 勇斗"}, {"owner": "パパパパパパパパパパワー", "p1": 238, "p2": 0, "n1": "工藤 泰成", "n2": "山田 脩也"}, {"owner": "毛玉おやぢ", "p1": 165, "p2": 2, "n1": "下村 海翔", "n2": "百﨑 蒼生"}, {"owner": "ケツからぼたもち", "p1": 127, "p2": 36, "n1": "立石 正広", "n2": "今朝丸 裕喜"}, {"owner": "あッチょんぶりけ", "p1": 41, "p2": 34, "n1": "嶋村 麟士朗", "n2": "岡城 快生"}];
+    new Chart(document.getElementById('userChart').getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: teamsData.map(t => t.owner),
+        datasets: [
+          { label: '主力指名選手', data: teamsData.map(t => t.p1), backgroundColor: '#ffe200', borderRadius: 4 },
+          { label: 'もう1名の指名選手', data: teamsData.map(t => t.p2), backgroundColor: '#f97316', borderRadius: 4 }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { labels: { color: '#d1d5db' } },
+          tooltip: {
+            callbacks: {
+              afterLabel: (ctx) => {
+                const t = teamsData[ctx.dataIndex];
+                return ctx.datasetIndex === 0 ? `${t.n1}: ${t.p1}pt` : `${t.n2}: ${t.p2}pt`;
+              }
+            }
+          }
+        },
+        scales: {
+          x: { stacked: true, ticks: { color: '#d1d5db' }, grid: { color: '#1f2937' } },
+          y: { stacked: true, ticks: { color: '#9ca3af' }, grid: { color: '#1f2937' }, title: { display: true, text: '合計ポイント (pt)', color: '#9ca3af' } }
+        }
+      }
+    });
+
+    // 平均ライン描画プラグイン (y = 100)
+    const avgLinePlugin = {
+      id: 'avgLine',
+      beforeDatasetsDraw(chart) {
+        const { ctx, chartArea: { left, right }, scales: { y } } = chart;
+        if (!y) return;
+        const yPos = y.getPixelForValue(100);
+        if (yPos < chart.chartArea.top || yPos > chart.chartArea.bottom) return;
+        ctx.save();
+        ctx.beginPath();
+        ctx.setLineDash([6, 4]);
+        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = 'rgba(52, 211, 153, 0.7)';
+        ctx.moveTo(left, yPos);
+        ctx.lineTo(right, yPos);
+        ctx.stroke();
+        ctx.fillStyle = 'rgba(52, 211, 153, 0.9)';
+        ctx.font = '11px "Noto Sans JP", sans-serif';
+        ctx.fillText('1軍平均 (100)', left + 6, yPos - 6);
+        ctx.restore();
+      }
+    };
+
+    // 2. 投手散布図
+    const pOther = [{"x": 535, "y": 141.8, "name": "竹丸 和幸", "team": "巨人", "kbb_pct": 19.07, "k_bb": 102, "era": "3.27", "ip": "126.2", "owner": "未指名", "bf_rank": 1, "kbb_pct_rank_30": 4}, {"x": 457, "y": 109.1, "name": "前田 悠伍", "team": "ソフトバンク", "kbb_pct": 14.66, "k_bb": 67, "era": "2.10", "ip": "111.2", "owner": "未指名", "bf_rank": 2, "kbb_pct_rank_30": 12}, {"x": 368, "y": 70.8, "name": "廣池 康志郎", "team": "ロッテ", "kbb_pct": 9.51, "k_bb": 35, "era": "4.32", "ip": "85.1", "owner": "未指名", "bf_rank": 3, "kbb_pct_rank_30": 31}, {"x": 357, "y": 37.5, "name": "毛利 海大", "team": "ロッテ", "kbb_pct": 5.04, "k_bb": 18, "era": "5.27", "ip": "80.1", "owner": "未指名", "bf_rank": 4, "kbb_pct_rank_30": 52}, {"x": 308, "y": 79.7, "name": "篠木 健太郎", "team": "DeNA", "kbb_pct": 10.71, "k_bb": 33, "era": "4.65", "ip": "71.2", "owner": "未指名", "bf_rank": 5, "kbb_pct_rank_30": 25}, {"x": 256, "y": 104.6, "name": "櫻井 頼之介", "team": "中日", "kbb_pct": 14.06, "k_bb": 36, "era": "5.31", "ip": "57.2", "owner": "未指名", "bf_rank": 6, "kbb_pct_rank_30": 14}, {"x": 234, "y": 60.4, "name": "深沢 鳳介", "team": "DeNA", "kbb_pct": 8.12, "k_bb": 19, "era": "2.96", "ip": "54.2", "owner": "未指名", "bf_rank": 8, "kbb_pct_rank_30": 40}, {"x": 203, "y": 69.6, "name": "吉田 聖弥", "team": "中日", "kbb_pct": 9.36, "k_bb": 19, "era": "2.44", "ip": "48.0", "owner": "未指名", "bf_rank": 10, "kbb_pct_rank_30": 33}, {"x": 198, "y": 67.6, "name": "佐藤 爽", "team": "西武", "kbb_pct": 9.09, "k_bb": 18, "era": "3.56", "ip": "48.0", "owner": "未指名", "bf_rank": 11, "kbb_pct_rank_30": 36}, {"x": 191, "y": 89.6, "name": "片山 皓心", "team": "DeNA", "kbb_pct": 12.04, "k_bb": 23, "era": "2.64", "ip": "44.1", "owner": "未指名", "bf_rank": 12, "kbb_pct_rank_30": 17}, {"x": 186, "y": 124.0, "name": "篠原 響", "team": "西武", "kbb_pct": 16.67, "k_bb": 31, "era": "2.22", "ip": "44.2", "owner": "未指名", "bf_rank": 13, "kbb_pct_rank_30": 8}, {"x": 181, "y": 45.2, "name": "片山 楽生", "team": "オリックス", "kbb_pct": 6.08, "k_bb": 11, "era": "3.77", "ip": "43.0", "owner": "未指名", "bf_rank": 14, "kbb_pct_rank_30": 49}, {"x": 178, "y": 129.6, "name": "鈴木 豪太", "team": "ソフトバンク", "kbb_pct": 17.42, "k_bb": 31, "era": "1.74", "ip": "46.2", "owner": "未指名", "bf_rank": 15, "kbb_pct_rank_30": 6}, {"x": 177, "y": 84.1, "name": "中西 聖輝", "team": "中日", "kbb_pct": 11.3, "k_bb": 20, "era": "6.39", "ip": "38.0", "owner": "未指名", "bf_rank": 16, "kbb_pct_rank_30": 21}, {"x": 170, "y": 56.9, "name": "廣澤 優", "team": "ヤクルト", "kbb_pct": 7.65, "k_bb": 13, "era": "2.85", "ip": "41.0", "owner": "未指名", "bf_rank": 17, "kbb_pct_rank_30": 42}, {"x": 168, "y": 128.4, "name": "九谷 瑠", "team": "楽天", "kbb_pct": 17.26, "k_bb": 29, "era": "1.94", "ip": "41.2", "owner": "未指名", "bf_rank": 18, "kbb_pct_rank_30": 7}, {"x": 164, "y": 68.0, "name": "若松 尚輝", "team": "DeNA", "kbb_pct": 9.15, "k_bb": 15, "era": "3.32", "ip": "38.0", "owner": "未指名", "bf_rank": 20, "kbb_pct_rank_30": 35}, {"x": 150, "y": 59.5, "name": "木村 光", "team": "ソフトバンク", "kbb_pct": 8.0, "k_bb": 12, "era": "2.75", "ip": "36.0", "owner": "未指名", "bf_rank": 21, "kbb_pct_rank_30": 41}, {"x": 150, "y": 79.4, "name": "権田 琉成", "team": "オリックス", "kbb_pct": 10.67, "k_bb": 16, "era": "3.79", "ip": "35.2", "owner": "未指名", "bf_rank": 21, "kbb_pct_rank_30": 26}, {"x": 148, "y": 65.3, "name": "斉藤 優汰", "team": "広島", "kbb_pct": 8.78, "k_bb": 13, "era": "4.54", "ip": "33.2", "owner": "未指名", "bf_rank": 23, "kbb_pct_rank_30": 37}, {"x": 146, "y": 40.8, "name": "入山 海斗", "team": "オリックス", "kbb_pct": 5.48, "k_bb": 8, "era": "3.09", "ip": "35.0", "owner": "未指名", "bf_rank": 24, "kbb_pct_rank_30": 51}, {"x": 145, "y": 46.2, "name": "増居 翔太", "team": "ヤクルト", "kbb_pct": 6.21, "k_bb": 9, "era": "3.16", "ip": "37.0", "owner": "未指名", "bf_rank": 25, "kbb_pct_rank_30": 48}, {"x": 142, "y": 73.3, "name": "辻 大雅", "team": "広島", "kbb_pct": 9.86, "k_bb": 14, "era": "4.68", "ip": "32.2", "owner": "未指名", "bf_rank": 26, "kbb_pct_rank_30": 29}, {"x": 134, "y": 77.7, "name": "伊藤 樹", "team": "楽天", "kbb_pct": 10.45, "k_bb": 14, "era": "4.20", "ip": "30.0", "owner": "未指名", "bf_rank": 27, "kbb_pct_rank_30": 28}, {"x": 133, "y": 78.3, "name": "藤原 聡大", "team": "楽天", "kbb_pct": 10.53, "k_bb": 14, "era": "4.60", "ip": "29.1", "owner": "未指名", "bf_rank": 28, "kbb_pct_rank_30": 27}, {"x": 130, "y": 91.6, "name": "岩城 颯空", "team": "西武", "kbb_pct": 12.31, "k_bb": 16, "era": "3.52", "ip": "30.2", "owner": "未指名", "bf_rank": 29, "kbb_pct_rank_30": 16}, {"x": 120, "y": 31.0, "name": "田和 廉", "team": "巨人", "kbb_pct": 4.17, "k_bb": 5, "era": "1.91", "ip": "28.1", "owner": "未指名", "bf_rank": 30, "kbb_pct_rank_30": 56}, {"x": 119, "y": 68.8, "name": "岩田 将貴", "team": "DeNA", "kbb_pct": 9.24, "k_bb": 11, "era": "2.22", "ip": "28.1", "owner": "未指名", "bf_rank": 31, "kbb_pct_rank_30": 34}, {"x": 116, "y": 83.4, "name": "代木 大和", "team": "巨人", "kbb_pct": 11.21, "k_bb": 13, "era": "2.28", "ip": "27.2", "owner": "未指名", "bf_rank": 32, "kbb_pct_rank_30": 22}, {"x": 111, "y": 46.9, "name": "黒田 将矢", "team": "西武", "kbb_pct": 6.31, "k_bb": 7, "era": "4.07", "ip": "24.1", "owner": "未指名", "bf_rank": 33, "kbb_pct_rank_30": 47}, {"x": 111, "y": 13.4, "name": "柴田 大地", "team": "楽天", "kbb_pct": 1.8, "k_bb": 2, "era": "6.56", "ip": "23.1", "owner": "未指名", "bf_rank": 33, "kbb_pct_rank_30": 63}, {"x": 109, "y": 88.7, "name": "泰 勝利", "team": "楽天", "kbb_pct": 11.93, "k_bb": 13, "era": "3.28", "ip": "24.2", "owner": "未指名", "bf_rank": 35, "kbb_pct_rank_30": 18}, {"x": 108, "y": 82.7, "name": "草加 勝", "team": "中日", "kbb_pct": 11.11, "k_bb": 12, "era": "2.59", "ip": "24.1", "owner": "未指名", "bf_rank": 36, "kbb_pct_rank_30": 24}, {"x": 107, "y": 83.4, "name": "島田 舜也", "team": "DeNA", "kbb_pct": 11.21, "k_bb": 12, "era": "4.38", "ip": "24.2", "owner": "未指名", "bf_rank": 37, "kbb_pct_rank_30": 22}, {"x": 86, "y": 86.5, "name": "石原 勇輝", "team": "ヤクルト", "kbb_pct": 11.63, "k_bb": 10, "era": "4.12", "ip": "19.2", "owner": "未指名", "bf_rank": 39, "kbb_pct_rank_30": 19}, {"x": 85, "y": 52.5, "name": "益田 武尚", "team": "広島", "kbb_pct": 7.06, "k_bb": 6, "era": "5.09", "ip": "17.2", "owner": "未指名", "bf_rank": 40, "kbb_pct_rank_30": 44}, {"x": 81, "y": 36.7, "name": "赤木 晴哉", "team": "広島", "kbb_pct": 4.94, "k_bb": 4, "era": "4.67", "ip": "17.1", "owner": "未指名", "bf_rank": 41, "kbb_pct_rank_30": 53}, {"x": 77, "y": 9.7, "name": "牧野 憲伸", "team": "中日", "kbb_pct": 1.3, "k_bb": 1, "era": "4.15", "ip": "17.1", "owner": "未指名", "bf_rank": 43, "kbb_pct_rank_30": 65}, {"x": 72, "y": 20.7, "name": "又木 鉄平", "team": "巨人", "kbb_pct": 2.78, "k_bb": 2, "era": "4.80", "ip": "15.0", "owner": "未指名", "bf_rank": 44, "kbb_pct_rank_30": 60}, {"x": 69, "y": 10.8, "name": "中込 陽翔", "team": "楽天", "kbb_pct": 1.45, "k_bb": 1, "era": "7.43", "ip": "13.1", "owner": "未指名", "bf_rank": 46, "kbb_pct_rank_30": 64}, {"x": 67, "y": 0.0, "name": "東松 快征", "team": "オリックス", "kbb_pct": 0.0, "k_bb": 0, "era": "5.40", "ip": "15.0", "owner": "未指名", "bf_rank": 47, "kbb_pct_rank_30": 66}, {"x": 66, "y": 56.4, "name": "菊地 ハルン", "team": "広島", "kbb_pct": 7.58, "k_bb": 5, "era": "6.43", "ip": "14.0", "owner": "未指名", "bf_rank": 48, "kbb_pct_rank_30": 43}, {"x": 66, "y": 33.8, "name": "吉川 悠斗", "team": "ロッテ", "kbb_pct": 4.55, "k_bb": 3, "era": "7.71", "ip": "14.0", "owner": "未指名", "bf_rank": 48, "kbb_pct_rank_30": 55}, {"x": 63, "y": 35.4, "name": "宮國 凌空", "team": "オリックス", "kbb_pct": 4.76, "k_bb": 3, "era": "9.00", "ip": "13.0", "owner": "未指名", "bf_rank": 50, "kbb_pct_rank_30": 54}, {"x": 60, "y": -62.0, "name": "山口 廉王", "team": "オリックス", "kbb_pct": -8.33, "k_bb": -5, "era": "6.94", "ip": "11.2", "owner": "未指名", "bf_rank": 52, "kbb_pct_rank_30": 72}, {"x": 59, "y": 113.5, "name": "柴田 獅子", "team": "日本ハム", "kbb_pct": 15.25, "k_bb": 9, "era": "2.03", "ip": "13.1", "owner": "未指名", "bf_rank": 53, "kbb_pct_rank_30": 10}, {"x": 58, "y": 64.1, "name": "宮﨑 颯", "team": "ロッテ", "kbb_pct": 8.62, "k_bb": 5, "era": "5.54", "ip": "13.0", "owner": "未指名", "bf_rank": 54, "kbb_pct_rank_30": 38}, {"x": 50, "y": 104.2, "name": "東山 玲士", "team": "オリックス", "kbb_pct": 14.0, "k_bb": 7, "era": "2.13", "ip": "12.2", "owner": "未指名", "bf_rank": 55, "kbb_pct_rank_30": 15}, {"x": 50, "y": 44.6, "name": "糸川 亮太", "team": "西武", "kbb_pct": 6.0, "k_bb": 3, "era": "6.17", "ip": "11.2", "owner": "未指名", "bf_rank": 55, "kbb_pct_rank_30": 50}, {"x": 49, "y": 15.2, "name": "齊藤 汰直", "team": "広島", "kbb_pct": 2.04, "k_bb": 1, "era": "9.31", "ip": "9.2", "owner": "未指名", "bf_rank": 57, "kbb_pct_rank_30": 62}, {"x": 49, "y": -60.7, "name": "佐藤 一磨", "team": "オリックス", "kbb_pct": -8.16, "k_bb": -4, "era": "9.00", "ip": "9.0", "owner": "未指名", "bf_rank": 57, "kbb_pct_rank_30": 71}, {"x": 46, "y": 113.2, "name": "松本 凌人", "team": "DeNA", "kbb_pct": 15.22, "k_bb": 7, "era": "3.27", "ip": "11.0", "owner": "未指名", "bf_rank": 59, "kbb_pct_rank_30": 11}, {"x": 43, "y": 51.9, "name": "工藤 泰己", "team": "広島", "kbb_pct": 6.98, "k_bb": 3, "era": "4.66", "ip": "9.2", "owner": "未指名", "bf_rank": 61, "kbb_pct_rank_30": 45}, {"x": 42, "y": 0.0, "name": "大川 慈英", "team": "日本ハム", "kbb_pct": 0.0, "k_bb": 0, "era": "6.48", "ip": "8.1", "owner": "未指名", "bf_rank": 62, "kbb_pct_rank_30": 66}, {"x": 41, "y": 0.0, "name": "大野 稼頭央", "team": "ソフトバンク", "kbb_pct": 0.0, "k_bb": 0, "era": "5.63", "ip": "8.0", "owner": "未指名", "bf_rank": 63, "kbb_pct_rank_30": 66}, {"x": 36, "y": 144.7, "name": "中村 優斗", "team": "ヤクルト", "kbb_pct": 19.44, "k_bb": 7, "era": "2.00", "ip": "9.0", "owner": "未指名", "bf_rank": 64, "kbb_pct_rank_30": 3}, {"x": 35, "y": 63.8, "name": "畔柳 亨丞", "team": "日本ハム", "kbb_pct": 8.57, "k_bb": 3, "era": "3.38", "ip": "8.0", "owner": "未指名", "bf_rank": 66, "kbb_pct_rank_30": 39}, {"x": 35, "y": 21.3, "name": "下川 隼佑", "team": "ヤクルト", "kbb_pct": 2.86, "k_bb": 1, "era": "6.14", "ip": "7.1", "owner": "未指名", "bf_rank": 66, "kbb_pct_rank_30": 59}, {"x": 34, "y": -21.9, "name": "藤原 大翔", "team": "ソフトバンク", "kbb_pct": -2.94, "k_bb": -1, "era": "9.45", "ip": "6.2", "owner": "未指名", "bf_rank": 68, "kbb_pct_rank_30": 69}, {"x": 32, "y": 69.7, "name": "髙橋 快秀", "team": "ロッテ", "kbb_pct": 9.38, "k_bb": 3, "era": "5.63", "ip": "8.0", "owner": "未指名", "bf_rank": 70, "kbb_pct_rank_30": 32}, {"x": 31, "y": 72.0, "name": "大竹 風雅", "team": "ソフトバンク", "kbb_pct": 9.68, "k_bb": 3, "era": "0.00", "ip": "7.0", "owner": "未指名", "bf_rank": 71, "kbb_pct_rank_30": 30}, {"x": 30, "y": 24.8, "name": "橋本 達弥", "team": "DeNA", "kbb_pct": 3.33, "k_bb": 1, "era": "1.35", "ip": "6.2", "owner": "未指名", "bf_rank": 72, "kbb_pct_rank_30": 57}];
+    const pHanshinUndrafted = [{"x": 91, "y": 106.3, "name": "石黒 佑弥", "team": "阪神", "kbb_pct": 14.29, "k_bb": 13, "era": "4.58", "ip": "19.2", "owner": "未指名", "bf_rank": 38, "kbb_pct_rank_30": 13}, {"x": 81, "y": 174.5, "name": "神宮 僚介", "team": "阪神", "kbb_pct": 23.46, "k_bb": 19, "era": "2.21", "ip": "20.1", "owner": "未指名", "bf_rank": 41, "kbb_pct_rank_30": 2}, {"x": 70, "y": 85.0, "name": "早川 太貴", "team": "阪神", "kbb_pct": 11.43, "k_bb": 8, "era": "9.22", "ip": "13.2", "owner": "未指名", "bf_rank": 45, "kbb_pct_rank_30": 20}, {"x": 63, "y": 23.6, "name": "茨木 秀俊", "team": "阪神", "kbb_pct": 3.17, "k_bb": 2, "era": "6.39", "ip": "12.2", "owner": "未指名", "bf_rank": 50, "kbb_pct_rank_30": 58}, {"x": 45, "y": 49.6, "name": "津田 淳哉", "team": "阪神", "kbb_pct": 6.67, "k_bb": 3, "era": "4.35", "ip": "10.1", "owner": "未指名", "bf_rank": 60, "kbb_pct_rank_30": 46}, {"x": 34, "y": -21.9, "name": "椎葉 剛", "team": "阪神", "kbb_pct": -2.94, "k_bb": -1, "era": "6.43", "ip": "7.0", "owner": "未指名", "bf_rank": 68, "kbb_pct_rank_30": 69}];
+    const pHanshinDrafted = [{"x": 238, "y": 203.2, "name": "工藤 泰成", "team": "阪神", "kbb_pct": 27.31, "k_bb": 65, "era": "1.05", "ip": "60.0", "owner": "パパパパパパパパパパワー", "bf_rank": 7, "kbb_pct_rank_30": 1}, {"x": 215, "y": 117.6, "name": "木下 里都", "team": "阪神", "kbb_pct": 15.81, "k_bb": 34, "era": "1.58", "ip": "51.1", "owner": "おならぶーぶぶ", "bf_rank": 9, "kbb_pct_rank_30": 9}, {"x": 165, "y": 135.3, "name": "下村 海翔", "team": "阪神", "kbb_pct": 18.18, "k_bb": 30, "era": "4.86", "ip": "37.0", "owner": "毛玉おやぢ", "bf_rank": 19, "kbb_pct_rank_30": 5}, {"x": 36, "y": 20.7, "name": "今朝丸 裕喜", "team": "阪神", "kbb_pct": 2.78, "k_bb": 1, "era": "5.63", "ip": "8.0", "owner": "ケツからぼたもち", "bf_rank": 64, "kbb_pct_rank_30": 60}];
+
+    new Chart(document.getElementById('pitcherScatter').getContext('2d'), {
+      type: 'scatter',
+      data: {
+        datasets: [
+          {
+            label: '他球団新人 (30打者以上)',
+            data: pOther,
+            backgroundColor: 'rgba(156, 163, 175, 0.45)',
+            borderColor: 'rgba(156, 163, 175, 0.7)',
+            pointRadius: 5,
+            pointHoverRadius: 7
+          },
+          {
+            label: '阪神・未指名新人',
+            data: pHanshinUndrafted,
+            backgroundColor: 'rgba(34, 211, 238, 0.85)',
+            borderColor: '#06b6d4',
+            pointRadius: 7,
+            pointHoverRadius: 9
+          },
+          {
+            label: '阪神・ドラフト指名選手',
+            data: pHanshinDrafted,
+            backgroundColor: '#ffe200',
+            borderColor: '#ffffff',
+            borderWidth: 2,
+            pointRadius: 9,
+            pointHoverRadius: 11
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { labels: { color: '#d1d5db', font: { size: 11 } } },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => {
+                const d = ctx.raw;
+                return [
+                  `${d.name} (${d.team}) [${d.owner}]`,
+                  `対戦打者: ${d.x} (${d.bf_rank}位) / 投球回: ${d.ip} / 防御率: ${d.era}`,
+                  `K-BB+: ${d.y} / K-BB%: ${d.kbb_pct}% / K-BB実数: ${d.k_bb}`
+                ];
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            title: { display: true, text: '対戦打者数（量）', color: '#9ca3af' },
+            ticks: { color: '#9ca3af' },
+            grid: { color: '#1f2937' }
+          },
+          y: {
+            title: { display: true, text: 'K-BB+（質：100=1軍平均）', color: '#9ca3af' },
+            ticks: { color: '#9ca3af' },
+            grid: { color: '#1f2937' }
+          }
+        }
+      },
+      plugins: [avgLinePlugin]
+    });
+
+    // 3. 野手散布図（横軸切替対応）
+    const hOtherRaw = [{"pa": 474, "tb_bb": 162, "y": 91.0, "name": "浦田 俊輔", "team": "巨人", "ops": 0.641, "avg": ".271", "tb": 130, "bb": 32, "owner": "未指名", "pa_rank": 1, "ops_plus_rank_20": 13}, {"pa": 367, "tb_bb": 150, "y": 102.2, "name": "小島 大河", "team": "西武", "ops": 0.687, "avg": ".267", "tb": 128, "bb": 22, "owner": "未指名", "pa_rank": 2, "ops_plus_rank_20": 7}, {"pa": 353, "tb_bb": 138, "y": 98.0, "name": "山中 稜真", "team": "オリックス", "ops": 0.668, "avg": ".259", "tb": 108, "bb": 30, "owner": "未指名", "pa_rank": 3, "ops_plus_rank_20": 9}, {"pa": 304, "tb_bb": 103, "y": 79.6, "name": "庄子 雄大", "team": "ソフトバンク", "ops": 0.604, "avg": ".244", "tb": 79, "bb": 24, "owner": "未指名", "pa_rank": 4, "ops_plus_rank_20": 18}, {"pa": 299, "tb_bb": 110, "y": 73.9, "name": "持丸 泰輝", "team": "広島", "ops": 0.584, "avg": ".183", "tb": 69, "bb": 41, "owner": "未指名", "pa_rank": 5, "ops_plus_rank_20": 22}, {"pa": 295, "tb_bb": 82, "y": 54.0, "name": "勝田 成", "team": "広島", "ops": 0.515, "avg": ".203", "tb": 61, "bb": 21, "owner": "未指名", "pa_rank": 6, "ops_plus_rank_20": 28}, {"pa": 285, "tb_bb": 103, "y": 84.7, "name": "名原 典彦", "team": "広島", "ops": 0.627, "avg": ".247", "tb": 91, "bb": 12, "owner": "未指名", "pa_rank": 7, "ops_plus_rank_20": 15}, {"pa": 266, "tb_bb": 106, "y": 96.1, "name": "平良 竜哉", "team": "楽天", "ops": 0.67, "avg": ".241", "tb": 96, "bb": 10, "owner": "未指名", "pa_rank": 8, "ops_plus_rank_20": 11}, {"pa": 223, "tb_bb": 99, "y": 108.8, "name": "宮下 朝陽", "team": "DeNA", "ops": 0.713, "avg": ".258", "tb": 86, "bb": 13, "owner": "未指名", "pa_rank": 9, "ops_plus_rank_20": 4}, {"pa": 160, "tb_bb": 75, "y": 110.0, "name": "進藤 勇也", "team": "日本ハム", "ops": 0.723, "avg": ".211", "tb": 64, "bb": 11, "owner": "未指名", "pa_rank": 10, "ops_plus_rank_20": 3}, {"pa": 159, "tb_bb": 67, "y": 96.5, "name": "花田 旭", "team": "中日", "ops": 0.673, "avg": ".242", "tb": 59, "bb": 8, "owner": "未指名", "pa_rank": 11, "ops_plus_rank_20": 10}, {"pa": 156, "tb_bb": 62, "y": 80.0, "name": "大塚 瑠晏", "team": "日本ハム", "ops": 0.615, "avg": ".181", "tb": 49, "bb": 13, "owner": "未指名", "pa_rank": 12, "ops_plus_rank_20": 17}, {"pa": 150, "tb_bb": 53, "y": 68.3, "name": "佐藤 啓介", "team": "広島", "ops": 0.572, "avg": ".203", "tb": 43, "bb": 10, "owner": "未指名", "pa_rank": 14, "ops_plus_rank_20": 26}, {"pa": 150, "tb_bb": 46, "y": 46.7, "name": "鈴木 叶", "team": "ヤクルト", "ops": 0.501, "avg": ".192", "tb": 42, "bb": 4, "owner": "未指名", "pa_rank": 14, "ops_plus_rank_20": 30}, {"pa": 134, "tb_bb": 46, "y": 74.9, "name": "石塚 裕惺", "team": "巨人", "ops": 0.588, "avg": ".216", "tb": 33, "bb": 13, "owner": "未指名", "pa_rank": 16, "ops_plus_rank_20": 21}, {"pa": 129, "tb_bb": 53, "y": 100.2, "name": "平山 功太", "team": "巨人", "ops": 0.683, "avg": ".248", "tb": 47, "bb": 6, "owner": "未指名", "pa_rank": 17, "ops_plus_rank_20": 8}, {"pa": 127, "tb_bb": 48, "y": 92.8, "name": "有薗 直輝", "team": "日本ハム", "ops": 0.65, "avg": ".227", "tb": 36, "bb": 12, "owner": "未指名", "pa_rank": 18, "ops_plus_rank_20": 12}, {"pa": 116, "tb_bb": 40, "y": 81.3, "name": "松下 歩叶", "team": "ヤクルト", "ops": 0.615, "avg": ".239", "tb": 36, "bb": 4, "owner": "未指名", "pa_rank": 20, "ops_plus_rank_20": 16}, {"pa": 113, "tb_bb": 46, "y": 103.4, "name": "西村 瑠伊斗", "team": "ヤクルト", "ops": 0.69, "avg": ".276", "tb": 39, "bb": 7, "owner": "未指名", "pa_rank": 21, "ops_plus_rank_20": 5}, {"pa": 109, "tb_bb": 31, "y": 43.7, "name": "平川 蓮", "team": "広島", "ops": 0.486, "avg": ".186", "tb": 26, "bb": 5, "owner": "未指名", "pa_rank": 22, "ops_plus_rank_20": 31}, {"pa": 106, "tb_bb": 41, "y": 78.7, "name": "笹原 操希", "team": "巨人", "ops": 0.611, "avg": ".212", "tb": 35, "bb": 6, "owner": "未指名", "pa_rank": 23, "ops_plus_rank_20": 19}, {"pa": 103, "tb_bb": 47, "y": 117.5, "name": "モンテル", "team": "ヤクルト", "ops": 0.744, "avg": ".278", "tb": 42, "bb": 5, "owner": "未指名", "pa_rank": 24, "ops_plus_rank_20": 2}, {"pa": 101, "tb_bb": 35, "y": 69.8, "name": "田中 陽翔", "team": "ヤクルト", "ops": 0.576, "avg": ".223", "tb": 29, "bb": 6, "owner": "未指名", "pa_rank": 25, "ops_plus_rank_20": 25}, {"pa": 77, "tb_bb": 21, "y": 38.9, "name": "繁永 晟", "team": "楽天", "ops": 0.47, "avg": ".186", "tb": 17, "bb": 4, "owner": "未指名", "pa_rank": 26, "ops_plus_rank_20": 32}, {"pa": 74, "tb_bb": 37, "y": 150.3, "name": "杉澤 龍", "team": "オリックス", "ops": 0.856, "avg": ".303", "tb": 33, "bb": 4, "owner": "未指名", "pa_rank": 27, "ops_plus_rank_20": 1}, {"pa": 73, "tb_bb": 23, "y": 72.1, "name": "成瀬 脩人", "team": "DeNA", "ops": 0.582, "avg": ".261", "tb": 21, "bb": 2, "owner": "未指名", "pa_rank": 28, "ops_plus_rank_20": 24}, {"pa": 65, "tb_bb": 21, "y": 47.2, "name": "石井 巧", "team": "ヤクルト", "ops": 0.496, "avg": ".158", "tb": 14, "bb": 7, "owner": "未指名", "pa_rank": 29, "ops_plus_rank_20": 29}, {"pa": 59, "tb_bb": 21, "y": 65.8, "name": "小濱 佑斗", "team": "巨人", "ops": 0.563, "avg": ".200", "tb": 17, "bb": 4, "owner": "未指名", "pa_rank": 30, "ops_plus_rank_20": 27}, {"pa": 36, "tb_bb": 5, "y": -14.1, "name": "吉野 創士", "team": "楽天", "ops": 0.29, "avg": ".118", "tb": 5, "bb": 0, "owner": "未指名", "pa_rank": 32, "ops_plus_rank_20": 42}, {"pa": 29, "tb_bb": 9, "y": 73.1, "name": "知念 大成", "team": "巨人", "ops": 0.586, "avg": ".276", "tb": 9, "bb": 0, "owner": "未指名", "pa_rank": 34, "ops_plus_rank_20": 23}, {"pa": 26, "tb_bb": 11, "y": 89.0, "name": "佐藤 太陽", "team": "西武", "ops": 0.654, "avg": ".231", "tb": 11, "bb": 0, "owner": "未指名", "pa_rank": 35, "ops_plus_rank_20": 14}, {"pa": 25, "tb_bb": 5, "y": 5.4, "name": "辰見 鴻之介", "team": "広島", "ops": 0.356, "avg": ".136", "tb": 4, "bb": 1, "owner": "未指名", "pa_rank": 36, "ops_plus_rank_20": 39}, {"pa": 25, "tb_bb": 5, "y": -6.9, "name": "前川 誠太", "team": "広島", "ops": 0.304, "avg": ".095", "tb": 2, "bb": 3, "owner": "未指名", "pa_rank": 36, "ops_plus_rank_20": 41}, {"pa": 25, "tb_bb": 4, "y": -5.0, "name": "堀 柊那", "team": "オリックス", "ops": 0.32, "avg": ".160", "tb": 4, "bb": 0, "owner": "未指名", "pa_rank": 36, "ops_plus_rank_20": 40}, {"pa": 23, "tb_bb": 3, "y": -30.2, "name": "横山 聖哉", "team": "オリックス", "ops": 0.232, "avg": ".095", "tb": 2, "bb": 1, "owner": "未指名", "pa_rank": 40, "ops_plus_rank_20": 43}, {"pa": 22, "tb_bb": 7, "y": 102.9, "name": "鈴木 大和", "team": "巨人", "ops": 0.679, "avg": ".263", "tb": 6, "bb": 1, "owner": "未指名", "pa_rank": 41, "ops_plus_rank_20": 6}, {"pa": 22, "tb_bb": 5, "y": 20.2, "name": "内藤 鵬", "team": "オリックス", "ops": 0.409, "avg": ".182", "tb": 5, "bb": 0, "owner": "未指名", "pa_rank": 41, "ops_plus_rank_20": 35}, {"pa": 20, "tb_bb": 4, "y": 7.3, "name": "皆川 岳飛", "team": "巨人", "ops": 0.358, "avg": ".158", "tb": 3, "bb": 1, "owner": "未指名", "pa_rank": 43, "ops_plus_rank_20": 38}];
+    const hHanshinUndraftedRaw = [{"pa": 154, "tb_bb": 49, "y": 77.5, "name": "福島 圭音", "team": "阪神", "ops": 0.596, "avg": ".228", "tb": 39, "bb": 10, "owner": "未指名", "pa_rank": 13, "ops_plus_rank_20": 20}, {"pa": 3, "tb_bb": 0, "y": -100.0, "name": "谷端 将伍", "team": "阪神", "ops": 0.0, "avg": ".000", "tb": 0, "bb": 0, "owner": "未指名", "pa_rank": 69, "ops_plus_rank_20": null}, {"pa": 2, "tb_bb": 0, "y": -100.0, "name": "井坪 陽生", "team": "阪神", "ops": 0.0, "avg": ".000", "tb": 0, "bb": 0, "owner": "未指名", "pa_rank": 71, "ops_plus_rank_20": null}];
+    const hHanshinDraftedRaw = [{"pa": 127, "tb_bb": 34, "y": 35.4, "name": "立石 正広", "team": "阪神", "ops": 0.461, "avg": ".192", "tb": 32, "bb": 2, "owner": "ケツからぼたもち", "pa_rank": 18, "ops_plus_rank_20": 34}, {"pa": 41, "tb_bb": 11, "y": 35.6, "name": "嶋村 麟士朗", "team": "阪神", "ops": 0.463, "avg": ".195", "tb": 11, "bb": 0, "owner": "あッチょんぶりけ", "pa_rank": 31, "ops_plus_rank_20": 33}, {"pa": 34, "tb_bb": 7, "y": 14.4, "name": "岡城 快生", "team": "阪神", "ops": 0.389, "avg": ".152", "tb": 7, "bb": 0, "owner": "あッチょんぶりけ", "pa_rank": 33, "ops_plus_rank_20": 36}, {"pa": 25, "tb_bb": 7, "y": 9.3, "name": "中川 勇斗", "team": "阪神", "ops": 0.355, "avg": ".053", "tb": 2, "bb": 5, "owner": "おならぶーぶぶ", "pa_rank": 36, "ops_plus_rank_20": 37}, {"pa": 2, "tb_bb": 0, "y": -100.0, "name": "百﨑 蒼生", "team": "阪神", "ops": 0.0, "avg": ".000", "tb": 0, "bb": 0, "owner": "毛玉おやぢ", "pa_rank": 71, "ops_plus_rank_20": null}];
+
+    function mapHitterPoints(arr, xKey) {
+      return arr.map(d => ({ ...d, x: d[xKey] }));
+    }
+
+    const hitterChart = new Chart(document.getElementById('hitterScatter').getContext('2d'), {
+      type: 'scatter',
+      data: {
+        datasets: [
+          {
+            label: '他球団新人 (20打席以上)',
+            data: mapHitterPoints(hOtherRaw, 'pa'),
+            backgroundColor: 'rgba(156, 163, 175, 0.45)',
+            borderColor: 'rgba(156, 163, 175, 0.7)',
+            pointRadius: 5,
+            pointHoverRadius: 7
+          },
+          {
+            label: '阪神・未指名新人',
+            data: mapHitterPoints(hHanshinUndraftedRaw, 'pa'),
+            backgroundColor: 'rgba(34, 211, 238, 0.85)',
+            borderColor: '#06b6d4',
+            pointRadius: 7,
+            pointHoverRadius: 9
+          },
+          {
+            label: '阪神・ドラフト指名選手',
+            data: mapHitterPoints(hHanshinDraftedRaw, 'pa'),
+            backgroundColor: '#ffe200',
+            borderColor: '#ffffff',
+            borderWidth: 2,
+            pointRadius: 9,
+            pointHoverRadius: 11
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { labels: { color: '#d1d5db', font: { size: 11 } } },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => {
+                const d = ctx.raw;
+                return [
+                  `${d.name} (${d.team}) [${d.owner}]`,
+                  `打席数: ${d.pa} (${d.pa_rank}位) / 塁打+四球: ${d.tb_bb} (${d.tb}+${d.bb})`,
+                  `OPS+: ${d.y} / OPS: ${d.ops?.toFixed(3)} / 打率: ${d.avg}`
+                ];
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            title: { display: true, text: '打席数（量）', color: '#9ca3af' },
+            ticks: { color: '#9ca3af' },
+            grid: { color: '#1f2937' }
+          },
+          y: {
+            title: { display: true, text: 'OPS+（質：100=1軍平均）', color: '#9ca3af' },
+            ticks: { color: '#9ca3af' },
+            grid: { color: '#1f2937' }
+          }
+        }
+      },
+      plugins: [avgLinePlugin]
+    });
+
+    function switchHitterX(mode) {
+      hitterChart.data.datasets[0].data = mapHitterPoints(hOtherRaw, mode);
+      hitterChart.data.datasets[1].data = mapHitterPoints(hHanshinUndraftedRaw, mode);
+      hitterChart.data.datasets[2].data = mapHitterPoints(hHanshinDraftedRaw, mode);
+      const labelTxt = mode === 'pa' ? '打席数' : '塁打＋四球';
+      document.getElementById('hitterXLabel').textContent = labelTxt;
+      hitterChart.options.scales.x.title.text = `${labelTxt}（量）`;
+      hitterChart.update();
+
+      const btnPA = document.getElementById('btnHitterPA');
+      const btnTBBB = document.getElementById('btnHitterTBBB');
+      if (mode === 'pa') {
+        btnPA.className = 'px-2.5 py-1 rounded-md bg-yellow-400 text-black font-bold transition';
+        btnTBBB.className = 'px-2.5 py-1 rounded-md text-gray-400 hover:text-white transition';
+      } else {
+        btnTBBB.className = 'px-2.5 py-1 rounded-md bg-yellow-400 text-black font-bold transition';
+        btnPA.className = 'px-2.5 py-1 rounded-md text-gray-400 hover:text-white transition';
+      }
+    }
+  </script>
+</body>
+</html>
