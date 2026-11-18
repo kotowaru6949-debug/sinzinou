@@ -1,6 +1,12 @@
 name: Update Draft Stats
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'build_full_analysis.py'
+      - '.github/workflows/update.yml'
   schedule:
     # 毎日 JST 07:00 (UTC 22:00) に自動実行
     - cron: '0 22 * * *'
@@ -10,7 +16,7 @@ permissions:
   contents: write
 
 jobs:
-  update:
+  fetch_part1:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -21,16 +27,74 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Run build_full_analysis.py
-        run: python build_full_analysis.py
+      - name: Fetch 2009-2017 if not cached
+        run: |
+          NEED_FULL=$(python -c "import json, os; p='history_data.json'; d=json.load(open(p, encoding='utf-8')) if os.path.exists(p) else {}; print('0' if len(d.get('years', {})) >= 18 else '1')")
+          if [ "$NEED_FULL" = "1" ]; then
+            python build_full_analysis.py --fetch-range 2009 2017 --out part1.json
+          else
+            echo '{"years":{}}' > part1.json
+          fi
+
+      - name: Upload part1 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: part1-json
+          path: part1.json
+
+  fetch_part2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fetch 2018-2026 (or 2026 only if past years cached)
+        run: |
+          NEED_FULL=$(python -c "import json, os; p='history_data.json'; d=json.load(open(p, encoding='utf-8')) if os.path.exists(p) else {}; print('0' if len(d.get('years', {})) >= 18 else '1')")
+          if [ "$NEED_FULL" = "1" ]; then
+            python build_full_analysis.py --fetch-range 2018 2026 --out part2.json
+          else
+            python build_full_analysis.py --fetch-range 2026 2026 --out part2.json
+          fi
+
+      - name: Upload part2 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: part2-json
+          path: part2.json
+
+  build_and_deploy:
+    needs: [fetch_part1, fetch_part2]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          merge-multiple: true
+
+      - name: Merge and generate dashboard
+        run: python build_full_analysis.py --merge part1.json part2.json
 
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html game_result.json
+          git add index.html history_data.json
           if ! git diff --cached --quiet; then
-            git commit -m "Update stats [skip ci]"
+            git commit -m "Update multi-year stats (2009-2026) [skip ci]"
             git push
           else
             echo "No changes to commit."
