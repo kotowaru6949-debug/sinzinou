@@ -29,7 +29,7 @@ jobs:
 
       - name: Fetch 2009-2017 if not cached
         run: |
-          NEED_FULL=$(python -c "import json, os; p='history_data.json'; d=json.load(open(p, encoding='utf-8')) if os.path.exists(p) else {}; print('0' if len(d.get('years', {})) >= 18 else '1')")
+          NEED_FULL=$(python -c "import json, os; from build_full_analysis import is_year_complete; p='history_data.json'; d=json.load(open(p, encoding='utf-8')) if os.path.exists(p) else {}; yrs=d.get('years', {}); print('0' if len(yrs) >= 18 and all(is_year_complete(y) for y in yrs.values()) else '1')")
           if [ "$NEED_FULL" = "1" ]; then
             python build_full_analysis.py --fetch-range 2009 2017 --out part1.json
           else
@@ -55,7 +55,7 @@ jobs:
 
       - name: Fetch 2018-2026 (or 2026 only if past years cached)
         run: |
-          NEED_FULL=$(python -c "import json, os; p='history_data.json'; d=json.load(open(p, encoding='utf-8')) if os.path.exists(p) else {}; print('0' if len(d.get('years', {})) >= 18 else '1')")
+          NEED_FULL=$(python -c "import json, os; from build_full_analysis import is_year_complete; p='history_data.json'; d=json.load(open(p, encoding='utf-8')) if os.path.exists(p) else {}; yrs=d.get('years', {}); print('0' if len(yrs) >= 18 and all(is_year_complete(y) for y in yrs.values()) else '1')")
           if [ "$NEED_FULL" = "1" ]; then
             python build_full_analysis.py --fetch-range 2018 2026 --out part2.json
           else
